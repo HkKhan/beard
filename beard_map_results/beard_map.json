@@ -1,0 +1,3519 @@
+{
+  "beard_vertices": [
+    0,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    32,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    57,
+    58,
+    61,
+    62,
+    72,
+    73,
+    74,
+    76,
+    77,
+    78,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    95,
+    96,
+    106,
+    135,
+    136,
+    138,
+    140,
+    146,
+    148,
+    149,
+    150,
+    152,
+    165,
+    167,
+    169,
+    170,
+    171,
+    172,
+    175,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    191,
+    192,
+    194,
+    199,
+    200,
+    201,
+    202,
+    204,
+    208,
+    210,
+    211,
+    212,
+    214,
+    215,
+    216,
+    262,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    287,
+    291,
+    292,
+    302,
+    304,
+    306,
+    307,
+    308,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    324,
+    325,
+    335,
+    375,
+    396,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    415,
+    418,
+    421,
+    422,
+    424,
+    428,
+    432,
+    436
+  ],
+  "high_confidence_vertices": [
+    0,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    32,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    57,
+    58,
+    61,
+    62,
+    72,
+    73,
+    74,
+    76,
+    77,
+    78,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    95,
+    96,
+    106,
+    135,
+    136,
+    138,
+    140,
+    146,
+    148,
+    149,
+    150,
+    152,
+    165,
+    167,
+    169,
+    170,
+    171,
+    172,
+    175,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    191,
+    194,
+    199,
+    200,
+    201,
+    202,
+    204,
+    208,
+    210,
+    211,
+    212,
+    214,
+    215,
+    216,
+    262,
+    268,
+    273,
+    307,
+    312,
+    313,
+    317,
+    321,
+    325,
+    335,
+    406,
+    407,
+    408,
+    418,
+    421,
+    424,
+    428
+  ],
+  "vertex_probabilities": {
+    "0": {
+      "avg_probability": 0.981507420539856,
+      "is_beard": true,
+      "confidence": 0.981507420539856,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "1": {
+      "avg_probability": 0.1971132606267929,
+      "is_beard": false,
+      "confidence": 0.8028867244720459,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "2": {
+      "avg_probability": 0.20551574230194092,
+      "is_beard": false,
+      "confidence": 0.7944842576980591,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "3": {
+      "avg_probability": 0.00359499454498291,
+      "is_beard": false,
+      "confidence": 0.9964050054550171,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "4": {
+      "avg_probability": 0.017350642010569572,
+      "is_beard": false,
+      "confidence": 0.9826493859291077,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "5": {
+      "avg_probability": 0.0025567179545760155,
+      "is_beard": false,
+      "confidence": 0.9974432587623596,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "6": {
+      "avg_probability": 3.24585780617781e-05,
+      "is_beard": false,
+      "confidence": 0.9999675154685974,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "7": {
+      "avg_probability": 2.8546749035740504e-06,
+      "is_beard": false,
+      "confidence": 0.9999971389770508,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "8": {
+      "avg_probability": 5.2800792218477e-06,
+      "is_beard": false,
+      "confidence": 0.999994695186615,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "9": {
+      "avg_probability": 2.902452615671791e-05,
+      "is_beard": false,
+      "confidence": 0.9999709725379944,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "10": {
+      "avg_probability": 8.748356208343466e-07,
+      "is_beard": false,
+      "confidence": 0.9999991059303284,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "11": {
+      "avg_probability": 0.796566367149353,
+      "is_beard": true,
+      "confidence": 0.796566367149353,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "12": {
+      "avg_probability": 0.7968840003013611,
+      "is_beard": true,
+      "confidence": 0.7968840003013611,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "13": {
+      "avg_probability": 0.7974640727043152,
+      "is_beard": true,
+      "confidence": 0.7974640727043152,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "14": {
+      "avg_probability": 0.7976267337799072,
+      "is_beard": true,
+      "confidence": 0.7976267337799072,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "15": {
+      "avg_probability": 0.7978326678276062,
+      "is_beard": true,
+      "confidence": 0.7978326678276062,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "16": {
+      "avg_probability": 0.8141209483146667,
+      "is_beard": true,
+      "confidence": 0.8141209483146667,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "17": {
+      "avg_probability": 0.8510993123054504,
+      "is_beard": true,
+      "confidence": 0.8510993123054504,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "18": {
+      "avg_probability": 0.9999632835388184,
+      "is_beard": true,
+      "confidence": 0.9999632835388184,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "19": {
+      "avg_probability": 0.20086804032325745,
+      "is_beard": false,
+      "confidence": 0.7991319894790649,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "20": {
+      "avg_probability": 0.00823731068521738,
+      "is_beard": false,
+      "confidence": 0.9917626976966858,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "21": {
+      "avg_probability": 5.455473001347855e-06,
+      "is_beard": false,
+      "confidence": 0.9999945163726807,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "22": {
+      "avg_probability": 0.005472801625728607,
+      "is_beard": false,
+      "confidence": 0.9945272207260132,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "23": {
+      "avg_probability": 0.008534682914614677,
+      "is_beard": false,
+      "confidence": 0.9914653301239014,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "24": {
+      "avg_probability": 3.080163514823653e-05,
+      "is_beard": false,
+      "confidence": 0.9999691843986511,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "25": {
+      "avg_probability": 2.264256409034715e-06,
+      "is_beard": false,
+      "confidence": 0.9999977350234985,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "26": {
+      "avg_probability": 0.0014759135665372014,
+      "is_beard": false,
+      "confidence": 0.9985240697860718,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "27": {
+      "avg_probability": 1.8171595002058893e-06,
+      "is_beard": false,
+      "confidence": 0.9999982118606567,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "28": {
+      "avg_probability": 4.325571353547275e-06,
+      "is_beard": false,
+      "confidence": 0.9999956488609314,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "29": {
+      "avg_probability": 6.697829917357012e-07,
+      "is_beard": false,
+      "confidence": 0.9999993443489075,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "30": {
+      "avg_probability": 9.088896604225738e-07,
+      "is_beard": false,
+      "confidence": 0.9999991059303284,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "31": {
+      "avg_probability": 7.415227628371213e-06,
+      "is_beard": false,
+      "confidence": 0.9999926090240479,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "32": {
+      "avg_probability": 0.999918520450592,
+      "is_beard": true,
+      "confidence": 0.999918520450592,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "33": {
+      "avg_probability": 2.1251983071124414e-06,
+      "is_beard": false,
+      "confidence": 0.9999978542327881,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "34": {
+      "avg_probability": 7.783771252434235e-06,
+      "is_beard": false,
+      "confidence": 0.9999921917915344,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "35": {
+      "avg_probability": 7.036770512058865e-06,
+      "is_beard": false,
+      "confidence": 0.9999929666519165,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "36": {
+      "avg_probability": 0.0040916563011705875,
+      "is_beard": false,
+      "confidence": 0.9959083199501038,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "37": {
+      "avg_probability": 0.994383692741394,
+      "is_beard": true,
+      "confidence": 0.994383692741394,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "38": {
+      "avg_probability": 0.7979286909103394,
+      "is_beard": true,
+      "confidence": 0.7979286909103394,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "39": {
+      "avg_probability": 0.9469888210296631,
+      "is_beard": true,
+      "confidence": 0.9469888210296631,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "40": {
+      "avg_probability": 0.8252848982810974,
+      "is_beard": true,
+      "confidence": 0.8252848982810974,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "41": {
+      "avg_probability": 0.818964958190918,
+      "is_beard": true,
+      "confidence": 0.818964958190918,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "42": {
+      "avg_probability": 0.845701277256012,
+      "is_beard": true,
+      "confidence": 0.845701277256012,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "43": {
+      "avg_probability": 0.971304714679718,
+      "is_beard": true,
+      "confidence": 0.971304714679718,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "44": {
+      "avg_probability": 0.0017848416464403272,
+      "is_beard": false,
+      "confidence": 0.9982151389122009,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "45": {
+      "avg_probability": 0.007098301779478788,
+      "is_beard": false,
+      "confidence": 0.9929016828536987,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "46": {
+      "avg_probability": 1.086591055354802e-06,
+      "is_beard": false,
+      "confidence": 0.999998927116394,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "47": {
+      "avg_probability": 0.007020828779786825,
+      "is_beard": false,
+      "confidence": 0.9929791688919067,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "48": {
+      "avg_probability": 0.002258752705529332,
+      "is_beard": false,
+      "confidence": 0.9977412223815918,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "49": {
+      "avg_probability": 0.0017996105598285794,
+      "is_beard": false,
+      "confidence": 0.9982004165649414,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "50": {
+      "avg_probability": 0.005997415632009506,
+      "is_beard": false,
+      "confidence": 0.9940025806427002,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "51": {
+      "avg_probability": 0.003032871289178729,
+      "is_beard": false,
+      "confidence": 0.9969671368598938,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "52": {
+      "avg_probability": 2.4411860067630187e-05,
+      "is_beard": false,
+      "confidence": 0.9999755620956421,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "53": {
+      "avg_probability": 5.54670577912475e-06,
+      "is_beard": false,
+      "confidence": 0.9999944567680359,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "54": {
+      "avg_probability": 1.219588170897623e-06,
+      "is_beard": false,
+      "confidence": 0.9999988079071045,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "55": {
+      "avg_probability": 7.022762474662159e-06,
+      "is_beard": false,
+      "confidence": 0.9999929666519165,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "56": {
+      "avg_probability": 3.820885467575863e-05,
+      "is_beard": false,
+      "confidence": 0.999961793422699,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "57": {
+      "avg_probability": 0.9878999590873718,
+      "is_beard": true,
+      "confidence": 0.9878999590873718,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "58": {
+      "avg_probability": 0.9438343048095703,
+      "is_beard": true,
+      "confidence": 0.9438343048095703,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "59": {
+      "avg_probability": 0.003439911175519228,
+      "is_beard": false,
+      "confidence": 0.9965600967407227,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "60": {
+      "avg_probability": 0.004671039991080761,
+      "is_beard": false,
+      "confidence": 0.995328962802887,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "61": {
+      "avg_probability": 0.9979539513587952,
+      "is_beard": true,
+      "confidence": 0.9979539513587952,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "62": {
+      "avg_probability": 0.9989051222801208,
+      "is_beard": true,
+      "confidence": 0.9989051222801208,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "63": {
+      "avg_probability": 4.081357928953366e-06,
+      "is_beard": false,
+      "confidence": 0.9999959468841553,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "64": {
+      "avg_probability": 0.0032250676304101944,
+      "is_beard": false,
+      "confidence": 0.9967749118804932,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "65": {
+      "avg_probability": 1.482201423641527e-05,
+      "is_beard": false,
+      "confidence": 0.9999851584434509,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "66": {
+      "avg_probability": 2.668139586603502e-06,
+      "is_beard": false,
+      "confidence": 0.9999973177909851,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "67": {
+      "avg_probability": 1.8137653796657105e-06,
+      "is_beard": false,
+      "confidence": 0.9999982118606567,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "68": {
+      "avg_probability": 1.022449396259617e-05,
+      "is_beard": false,
+      "confidence": 0.9999897480010986,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "69": {
+      "avg_probability": 1.1420609098422574e-06,
+      "is_beard": false,
+      "confidence": 0.9999988675117493,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "70": {
+      "avg_probability": 7.772651429149846e-07,
+      "is_beard": false,
+      "confidence": 0.9999992251396179,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "71": {
+      "avg_probability": 7.505399253204814e-07,
+      "is_beard": false,
+      "confidence": 0.9999992251396179,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "72": {
+      "avg_probability": 0.7951685190200806,
+      "is_beard": true,
+      "confidence": 0.7951685190200806,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "73": {
+      "avg_probability": 0.8048449754714966,
+      "is_beard": true,
+      "confidence": 0.8048449754714966,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "74": {
+      "avg_probability": 0.8908098936080933,
+      "is_beard": true,
+      "confidence": 0.8908098936080933,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "75": {
+      "avg_probability": 0.007939391769468784,
+      "is_beard": false,
+      "confidence": 0.9920606017112732,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "76": {
+      "avg_probability": 0.9983068704605103,
+      "is_beard": true,
+      "confidence": 0.9983068704605103,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "77": {
+      "avg_probability": 0.9531281590461731,
+      "is_beard": true,
+      "confidence": 0.9531281590461731,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "78": {
+      "avg_probability": 0.9847896099090576,
+      "is_beard": true,
+      "confidence": 0.9847896099090576,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "79": {
+      "avg_probability": 0.0026214648969471455,
+      "is_beard": false,
+      "confidence": 0.9973785281181335,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "80": {
+      "avg_probability": 0.8446688055992126,
+      "is_beard": true,
+      "confidence": 0.8446688055992126,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "81": {
+      "avg_probability": 0.804103672504425,
+      "is_beard": true,
+      "confidence": 0.804103672504425,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "82": {
+      "avg_probability": 0.8012774586677551,
+      "is_beard": true,
+      "confidence": 0.8012774586677551,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "83": {
+      "avg_probability": 0.9995483756065369,
+      "is_beard": true,
+      "confidence": 0.9995483756065369,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "84": {
+      "avg_probability": 0.8027499914169312,
+      "is_beard": true,
+      "confidence": 0.8027499914169312,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "85": {
+      "avg_probability": 0.7892268300056458,
+      "is_beard": true,
+      "confidence": 0.7892268300056458,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "86": {
+      "avg_probability": 0.7988179922103882,
+      "is_beard": true,
+      "confidence": 0.7988179922103882,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "87": {
+      "avg_probability": 0.8008826375007629,
+      "is_beard": true,
+      "confidence": 0.8008826375007629,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "88": {
+      "avg_probability": 0.8391267657279968,
+      "is_beard": true,
+      "confidence": 0.8391267657279968,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "89": {
+      "avg_probability": 0.8968393206596375,
+      "is_beard": true,
+      "confidence": 0.8968393206596375,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "90": {
+      "avg_probability": 0.8665487766265869,
+      "is_beard": true,
+      "confidence": 0.8665487766265869,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "91": {
+      "avg_probability": 0.8555864691734314,
+      "is_beard": true,
+      "confidence": 0.8555864691734314,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "92": {
+      "avg_probability": 0.9955807328224182,
+      "is_beard": true,
+      "confidence": 0.9955807328224182,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "93": {
+      "avg_probability": 0.21406999230384827,
+      "is_beard": false,
+      "confidence": 0.7859300374984741,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "94": {
+      "avg_probability": 0.2047022581100464,
+      "is_beard": false,
+      "confidence": 0.7952977418899536,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "95": {
+      "avg_probability": 0.8597757816314697,
+      "is_beard": true,
+      "confidence": 0.8597757816314697,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "96": {
+      "avg_probability": 0.9062972068786621,
+      "is_beard": true,
+      "confidence": 0.9062972068786621,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "97": {
+      "avg_probability": 0.03947783634066582,
+      "is_beard": false,
+      "confidence": 0.9605221748352051,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "98": {
+      "avg_probability": 0.010352705605328083,
+      "is_beard": false,
+      "confidence": 0.9896472692489624,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "99": {
+      "avg_probability": 0.01680546998977661,
+      "is_beard": false,
+      "confidence": 0.9831945300102234,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "100": {
+      "avg_probability": 0.0012206684332340956,
+      "is_beard": false,
+      "confidence": 0.9987793564796448,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "101": {
+      "avg_probability": 0.0017947383457794785,
+      "is_beard": false,
+      "confidence": 0.9982052445411682,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "102": {
+      "avg_probability": 0.0023867737036198378,
+      "is_beard": false,
+      "confidence": 0.997613251209259,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "103": {
+      "avg_probability": 2.4865046270861058e-06,
+      "is_beard": false,
+      "confidence": 0.9999974966049194,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "104": {
+      "avg_probability": 5.735367381021206e-07,
+      "is_beard": false,
+      "confidence": 0.9999994039535522,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "105": {
+      "avg_probability": 3.110645411652513e-05,
+      "is_beard": false,
+      "confidence": 0.9999688863754272,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "106": {
+      "avg_probability": 0.9665173888206482,
+      "is_beard": true,
+      "confidence": 0.9665173888206482,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "107": {
+      "avg_probability": 6.021211902407231e-07,
+      "is_beard": false,
+      "confidence": 0.9999994039535522,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "108": {
+      "avg_probability": 5.099579993839143e-07,
+      "is_beard": false,
+      "confidence": 0.999999463558197,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "109": {
+      "avg_probability": 3.1394197321787942e-06,
+      "is_beard": false,
+      "confidence": 0.9999968409538269,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "110": {
+      "avg_probability": 3.7291970329533797e-06,
+      "is_beard": false,
+      "confidence": 0.9999962449073792,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "111": {
+      "avg_probability": 3.3658711799944285e-06,
+      "is_beard": false,
+      "confidence": 0.9999966621398926,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "112": {
+      "avg_probability": 0.0005055544897913933,
+      "is_beard": false,
+      "confidence": 0.9994944334030151,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "113": {
+      "avg_probability": 9.847392902884167e-06,
+      "is_beard": false,
+      "confidence": 0.9999901652336121,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "114": {
+      "avg_probability": 0.002609473653137684,
+      "is_beard": false,
+      "confidence": 0.9973905086517334,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "115": {
+      "avg_probability": 0.0018163559725508094,
+      "is_beard": false,
+      "confidence": 0.9981836676597595,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "116": {
+      "avg_probability": 3.536095391609706e-05,
+      "is_beard": false,
+      "confidence": 0.9999646544456482,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "117": {
+      "avg_probability": 2.5956985609809635e-06,
+      "is_beard": false,
+      "confidence": 0.9999973773956299,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "118": {
+      "avg_probability": 0.00026817552861757576,
+      "is_beard": false,
+      "confidence": 0.9997318387031555,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "119": {
+      "avg_probability": 0.0001401738409185782,
+      "is_beard": false,
+      "confidence": 0.9998598098754883,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "120": {
+      "avg_probability": 0.0008527712197974324,
+      "is_beard": false,
+      "confidence": 0.9991472363471985,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "121": {
+      "avg_probability": 0.002478349953889847,
+      "is_beard": false,
+      "confidence": 0.9975216388702393,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "122": {
+      "avg_probability": 0.0009016796248033643,
+      "is_beard": false,
+      "confidence": 0.9990983009338379,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "123": {
+      "avg_probability": 0.024865813553333282,
+      "is_beard": false,
+      "confidence": 0.9751341938972473,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "124": {
+      "avg_probability": 1.306241870224767e-06,
+      "is_beard": false,
+      "confidence": 0.9999986886978149,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "125": {
+      "avg_probability": 0.1763761192560196,
+      "is_beard": false,
+      "confidence": 0.8236238956451416,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "126": {
+      "avg_probability": 0.004668406210839748,
+      "is_beard": false,
+      "confidence": 0.9953315854072571,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "127": {
+      "avg_probability": 0.00012244108074810356,
+      "is_beard": false,
+      "confidence": 0.9998775720596313,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "128": {
+      "avg_probability": 0.002028097165748477,
+      "is_beard": false,
+      "confidence": 0.9979718923568726,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "129": {
+      "avg_probability": 0.0017224398907274008,
+      "is_beard": false,
+      "confidence": 0.9982775449752808,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "130": {
+      "avg_probability": 1.2547487813208136e-06,
+      "is_beard": false,
+      "confidence": 0.9999987483024597,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "131": {
+      "avg_probability": 0.0055466461926698685,
+      "is_beard": false,
+      "confidence": 0.9944533705711365,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "132": {
+      "avg_probability": 0.428866982460022,
+      "is_beard": false,
+      "confidence": 0.571133017539978,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "133": {
+      "avg_probability": 0.00016062827489804476,
+      "is_beard": false,
+      "confidence": 0.9998393654823303,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "134": {
+      "avg_probability": 0.004099130164831877,
+      "is_beard": false,
+      "confidence": 0.9959008693695068,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "135": {
+      "avg_probability": 0.9747908711433411,
+      "is_beard": true,
+      "confidence": 0.9747908711433411,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "136": {
+      "avg_probability": 0.9998582601547241,
+      "is_beard": true,
+      "confidence": 0.9998582601547241,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "137": {
+      "avg_probability": 0.007407823111861944,
+      "is_beard": false,
+      "confidence": 0.9925921559333801,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "138": {
+      "avg_probability": 0.9216838479042053,
+      "is_beard": true,
+      "confidence": 0.9216838479042053,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "139": {
+      "avg_probability": 2.651133627296076e-06,
+      "is_beard": false,
+      "confidence": 0.9999973773956299,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "140": {
+      "avg_probability": 0.9999719262123108,
+      "is_beard": true,
+      "confidence": 0.9999719262123108,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "141": {
+      "avg_probability": 0.19805988669395447,
+      "is_beard": false,
+      "confidence": 0.8019400835037231,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "142": {
+      "avg_probability": 0.00395905552431941,
+      "is_beard": false,
+      "confidence": 0.996040940284729,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "143": {
+      "avg_probability": 7.625862963323016e-06,
+      "is_beard": false,
+      "confidence": 0.9999923706054688,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "144": {
+      "avg_probability": 0.00011655969137791544,
+      "is_beard": false,
+      "confidence": 0.9998834133148193,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "145": {
+      "avg_probability": 0.006274860352277756,
+      "is_beard": false,
+      "confidence": 0.9937251210212708,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "146": {
+      "avg_probability": 0.9747071266174316,
+      "is_beard": true,
+      "confidence": 0.9747071266174316,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "147": {
+      "avg_probability": 0.005857996642589569,
+      "is_beard": false,
+      "confidence": 0.9941419959068298,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "148": {
+      "avg_probability": 0.9999692440032959,
+      "is_beard": true,
+      "confidence": 0.9999692440032959,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "149": {
+      "avg_probability": 0.9999812245368958,
+      "is_beard": true,
+      "confidence": 0.9999812245368958,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "150": {
+      "avg_probability": 0.9997993111610413,
+      "is_beard": true,
+      "confidence": 0.9997993111610413,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "151": {
+      "avg_probability": 8.693618838151451e-07,
+      "is_beard": false,
+      "confidence": 0.9999991059303284,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "152": {
+      "avg_probability": 0.8010883331298828,
+      "is_beard": true,
+      "confidence": 0.8010883331298828,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "153": {
+      "avg_probability": 0.007344929967075586,
+      "is_beard": false,
+      "confidence": 0.9926550984382629,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "154": {
+      "avg_probability": 0.001517389202490449,
+      "is_beard": false,
+      "confidence": 0.9984825849533081,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "155": {
+      "avg_probability": 0.0004488806880544871,
+      "is_beard": false,
+      "confidence": 0.9995511174201965,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "156": {
+      "avg_probability": 1.666727484916919e-06,
+      "is_beard": false,
+      "confidence": 0.9999983310699463,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "157": {
+      "avg_probability": 0.0005785591201856732,
+      "is_beard": false,
+      "confidence": 0.9994214177131653,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "158": {
+      "avg_probability": 0.0015812317142263055,
+      "is_beard": false,
+      "confidence": 0.9984187483787537,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "159": {
+      "avg_probability": 7.52617052057758e-06,
+      "is_beard": false,
+      "confidence": 0.9999924898147583,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "160": {
+      "avg_probability": 1.7713288116283366e-06,
+      "is_beard": false,
+      "confidence": 0.9999982118606567,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "161": {
+      "avg_probability": 2.3426318875863217e-06,
+      "is_beard": false,
+      "confidence": 0.9999976754188538,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "162": {
+      "avg_probability": 4.709970653493656e-06,
+      "is_beard": false,
+      "confidence": 0.9999952912330627,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "163": {
+      "avg_probability": 4.648106823879061e-06,
+      "is_beard": false,
+      "confidence": 0.9999953508377075,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "164": {
+      "avg_probability": 0.341988205909729,
+      "is_beard": false,
+      "confidence": 0.658011794090271,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "165": {
+      "avg_probability": 0.9594781398773193,
+      "is_beard": true,
+      "confidence": 0.9594781398773193,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "166": {
+      "avg_probability": 0.0034402874298393726,
+      "is_beard": false,
+      "confidence": 0.996559739112854,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "167": {
+      "avg_probability": 0.7174221277236938,
+      "is_beard": true,
+      "confidence": 0.7174221277236938,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "168": {
+      "avg_probability": 1.5032573173812125e-05,
+      "is_beard": false,
+      "confidence": 0.9999849796295166,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "169": {
+      "avg_probability": 0.9999154210090637,
+      "is_beard": true,
+      "confidence": 0.9999154210090637,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "170": {
+      "avg_probability": 0.9996203184127808,
+      "is_beard": true,
+      "confidence": 0.9996203184127808,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "171": {
+      "avg_probability": 0.9999901056289673,
+      "is_beard": true,
+      "confidence": 0.9999901056289673,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "172": {
+      "avg_probability": 0.982175350189209,
+      "is_beard": true,
+      "confidence": 0.982175350189209,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "173": {
+      "avg_probability": 0.0004251920327078551,
+      "is_beard": false,
+      "confidence": 0.9995747804641724,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "174": {
+      "avg_probability": 0.0010845133801922202,
+      "is_beard": false,
+      "confidence": 0.9989154934883118,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "175": {
+      "avg_probability": 0.8010491132736206,
+      "is_beard": true,
+      "confidence": 0.8010491132736206,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "176": {
+      "avg_probability": 0.9998610615730286,
+      "is_beard": true,
+      "confidence": 0.9998610615730286,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "177": {
+      "avg_probability": 0.34436488151550293,
+      "is_beard": false,
+      "confidence": 0.6556351184844971,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "178": {
+      "avg_probability": 0.8039410710334778,
+      "is_beard": true,
+      "confidence": 0.8039410710334778,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "179": {
+      "avg_probability": 0.8014381527900696,
+      "is_beard": true,
+      "confidence": 0.8014381527900696,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "180": {
+      "avg_probability": 0.8019583225250244,
+      "is_beard": true,
+      "confidence": 0.8019583225250244,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "181": {
+      "avg_probability": 0.8081260919570923,
+      "is_beard": true,
+      "confidence": 0.8081260919570923,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "182": {
+      "avg_probability": 0.9989925622940063,
+      "is_beard": true,
+      "confidence": 0.9989925622940063,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "183": {
+      "avg_probability": 0.9851664304733276,
+      "is_beard": true,
+      "confidence": 0.9851664304733276,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "184": {
+      "avg_probability": 0.9938176274299622,
+      "is_beard": true,
+      "confidence": 0.9938176274299622,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "185": {
+      "avg_probability": 0.9904541969299316,
+      "is_beard": true,
+      "confidence": 0.9904541969299316,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "186": {
+      "avg_probability": 0.9971539974212646,
+      "is_beard": true,
+      "confidence": 0.9971539974212646,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "187": {
+      "avg_probability": 0.0037417798303067684,
+      "is_beard": false,
+      "confidence": 0.9962581992149353,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "188": {
+      "avg_probability": 0.0014469671295955777,
+      "is_beard": false,
+      "confidence": 0.9985530376434326,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "189": {
+      "avg_probability": 7.526794797740877e-05,
+      "is_beard": false,
+      "confidence": 0.9999247193336487,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "190": {
+      "avg_probability": 6.77174175507389e-05,
+      "is_beard": false,
+      "confidence": 0.9999322891235352,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "191": {
+      "avg_probability": 0.8815140128135681,
+      "is_beard": true,
+      "confidence": 0.8815140128135681,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "192": {
+      "avg_probability": 0.6032143831253052,
+      "is_beard": true,
+      "confidence": 0.6032143831253052,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "193": {
+      "avg_probability": 6.532556290039793e-05,
+      "is_beard": false,
+      "confidence": 0.9999346733093262,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "194": {
+      "avg_probability": 0.9998783469200134,
+      "is_beard": true,
+      "confidence": 0.9998783469200134,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "195": {
+      "avg_probability": 0.00021409201144706458,
+      "is_beard": false,
+      "confidence": 0.9997859001159668,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "196": {
+      "avg_probability": 0.0005838567158207297,
+      "is_beard": false,
+      "confidence": 0.999416172504425,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "197": {
+      "avg_probability": 0.0008448549779132009,
+      "is_beard": false,
+      "confidence": 0.9991551637649536,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "198": {
+      "avg_probability": 0.00737280398607254,
+      "is_beard": false,
+      "confidence": 0.9926272034645081,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "199": {
+      "avg_probability": 0.8069542050361633,
+      "is_beard": true,
+      "confidence": 0.8069542050361633,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "200": {
+      "avg_probability": 0.9998699426651001,
+      "is_beard": true,
+      "confidence": 0.9998699426651001,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "201": {
+      "avg_probability": 0.9999660849571228,
+      "is_beard": true,
+      "confidence": 0.9999660849571228,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "202": {
+      "avg_probability": 0.954734742641449,
+      "is_beard": true,
+      "confidence": 0.954734742641449,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "203": {
+      "avg_probability": 0.007092538755387068,
+      "is_beard": false,
+      "confidence": 0.9929074645042419,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "204": {
+      "avg_probability": 0.9994020462036133,
+      "is_beard": true,
+      "confidence": 0.9994020462036133,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "205": {
+      "avg_probability": 0.0018212643917649984,
+      "is_beard": false,
+      "confidence": 0.9981787204742432,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "206": {
+      "avg_probability": 0.09669191390275955,
+      "is_beard": false,
+      "confidence": 0.903308093547821,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "207": {
+      "avg_probability": 0.002437018323689699,
+      "is_beard": false,
+      "confidence": 0.9975630044937134,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "208": {
+      "avg_probability": 0.9999691247940063,
+      "is_beard": true,
+      "confidence": 0.9999691247940063,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "209": {
+      "avg_probability": 0.008485587313771248,
+      "is_beard": false,
+      "confidence": 0.9915143847465515,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "210": {
+      "avg_probability": 0.994018018245697,
+      "is_beard": true,
+      "confidence": 0.994018018245697,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "211": {
+      "avg_probability": 0.9998396039009094,
+      "is_beard": true,
+      "confidence": 0.9998396039009094,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "212": {
+      "avg_probability": 0.9767440557479858,
+      "is_beard": true,
+      "confidence": 0.9767440557479858,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "213": {
+      "avg_probability": 0.3370814621448517,
+      "is_beard": false,
+      "confidence": 0.6629185676574707,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "214": {
+      "avg_probability": 0.7074888944625854,
+      "is_beard": true,
+      "confidence": 0.7074888944625854,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "215": {
+      "avg_probability": 0.8809995055198669,
+      "is_beard": true,
+      "confidence": 0.8809995055198669,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "216": {
+      "avg_probability": 0.9272769689559937,
+      "is_beard": true,
+      "confidence": 0.9272769689559937,
+      "vote_count": 5,
+      "total_views": 5
+    },
+    "217": {
+      "avg_probability": 0.004015166778117418,
+      "is_beard": false,
+      "confidence": 0.9959848523139954,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "218": {
+      "avg_probability": 0.002108930377289653,
+      "is_beard": false,
+      "confidence": 0.9978910684585571,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "219": {
+      "avg_probability": 0.0025183602701872587,
+      "is_beard": false,
+      "confidence": 0.997481644153595,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "220": {
+      "avg_probability": 0.0025242904666811228,
+      "is_beard": false,
+      "confidence": 0.9974756836891174,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "221": {
+      "avg_probability": 1.5074573639139999e-05,
+      "is_beard": false,
+      "confidence": 0.9999849200248718,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "222": {
+      "avg_probability": 2.466473597451113e-05,
+      "is_beard": false,
+      "confidence": 0.999975323677063,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "223": {
+      "avg_probability": 5.996182153467089e-06,
+      "is_beard": false,
+      "confidence": 0.9999939799308777,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "224": {
+      "avg_probability": 9.493407446825586e-07,
+      "is_beard": false,
+      "confidence": 0.9999990463256836,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "225": {
+      "avg_probability": 1.3691087588085793e-06,
+      "is_beard": false,
+      "confidence": 0.9999986290931702,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "226": {
+      "avg_probability": 1.6719830000511138e-06,
+      "is_beard": false,
+      "confidence": 0.9999983310699463,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "227": {
+      "avg_probability": 9.099457383854315e-05,
+      "is_beard": false,
+      "confidence": 0.999908983707428,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "228": {
+      "avg_probability": 2.0094253159186337e-06,
+      "is_beard": false,
+      "confidence": 0.9999979734420776,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "229": {
+      "avg_probability": 2.107070031343028e-06,
+      "is_beard": false,
+      "confidence": 0.9999979138374329,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "230": {
+      "avg_probability": 0.002944239182397723,
+      "is_beard": false,
+      "confidence": 0.9970557689666748,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "231": {
+      "avg_probability": 0.0048351283185184,
+      "is_beard": false,
+      "confidence": 0.9951648712158203,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "232": {
+      "avg_probability": 0.0005384426913224161,
+      "is_beard": false,
+      "confidence": 0.9994615316390991,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "233": {
+      "avg_probability": 0.0018949725199490786,
+      "is_beard": false,
+      "confidence": 0.9981050491333008,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "234": {
+      "avg_probability": 0.005881263874471188,
+      "is_beard": false,
+      "confidence": 0.9941187500953674,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "235": {
+      "avg_probability": 0.004550567828118801,
+      "is_beard": false,
+      "confidence": 0.995449423789978,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "236": {
+      "avg_probability": 0.001989929936826229,
+      "is_beard": false,
+      "confidence": 0.9980100989341736,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "237": {
+      "avg_probability": 0.0022558290511369705,
+      "is_beard": false,
+      "confidence": 0.9977441430091858,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "238": {
+      "avg_probability": 0.0023226060438901186,
+      "is_beard": false,
+      "confidence": 0.9976773858070374,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "239": {
+      "avg_probability": 0.002266440074890852,
+      "is_beard": false,
+      "confidence": 0.9977335333824158,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "240": {
+      "avg_probability": 0.007272256072610617,
+      "is_beard": false,
+      "confidence": 0.9927277565002441,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "241": {
+      "avg_probability": 0.09943744540214539,
+      "is_beard": false,
+      "confidence": 0.9005625247955322,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "242": {
+      "avg_probability": 0.10334780812263489,
+      "is_beard": false,
+      "confidence": 0.8966522216796875,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "243": {
+      "avg_probability": 0.00010353478137403727,
+      "is_beard": false,
+      "confidence": 0.9998964667320251,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "244": {
+      "avg_probability": 0.0008058138773776591,
+      "is_beard": false,
+      "confidence": 0.9991942048072815,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "245": {
+      "avg_probability": 0.0007882309728302062,
+      "is_beard": false,
+      "confidence": 0.9992117881774902,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "246": {
+      "avg_probability": 2.548423253756482e-06,
+      "is_beard": false,
+      "confidence": 0.9999974370002747,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "247": {
+      "avg_probability": 9.01331645764003e-07,
+      "is_beard": false,
+      "confidence": 0.9999991059303284,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "248": {
+      "avg_probability": 0.00030239811167120934,
+      "is_beard": false,
+      "confidence": 0.9996976256370544,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "249": {
+      "avg_probability": 0.003358016489073634,
+      "is_beard": false,
+      "confidence": 0.996641993522644,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "250": {
+      "avg_probability": 0.05969653278589249,
+      "is_beard": false,
+      "confidence": 0.9403034448623657,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "251": {
+      "avg_probability": 6.184017547639087e-05,
+      "is_beard": false,
+      "confidence": 0.9999381303787231,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "252": {
+      "avg_probability": 1.8868620827561244e-05,
+      "is_beard": false,
+      "confidence": 0.9999811053276062,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "253": {
+      "avg_probability": 0.0005199236329644918,
+      "is_beard": false,
+      "confidence": 0.9994800686836243,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "254": {
+      "avg_probability": 0.00170903408434242,
+      "is_beard": false,
+      "confidence": 0.9982909560203552,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "255": {
+      "avg_probability": 0.0021734184119850397,
+      "is_beard": false,
+      "confidence": 0.9978265762329102,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "256": {
+      "avg_probability": 1.577558032295201e-05,
+      "is_beard": false,
+      "confidence": 0.9999842047691345,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "257": {
+      "avg_probability": 6.730142195010558e-05,
+      "is_beard": false,
+      "confidence": 0.9999327063560486,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "258": {
+      "avg_probability": 5.826050619361922e-05,
+      "is_beard": false,
+      "confidence": 0.9999417662620544,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "259": {
+      "avg_probability": 8.458793308818713e-05,
+      "is_beard": false,
+      "confidence": 0.9999154210090637,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "260": {
+      "avg_probability": 5.140489884070121e-05,
+      "is_beard": false,
+      "confidence": 0.9999486207962036,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "261": {
+      "avg_probability": 0.006715720985084772,
+      "is_beard": false,
+      "confidence": 0.993284285068512,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "262": {
+      "avg_probability": 0.7483541369438171,
+      "is_beard": true,
+      "confidence": 0.7483541369438171,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "263": {
+      "avg_probability": 0.002442836994305253,
+      "is_beard": false,
+      "confidence": 0.9975571632385254,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "264": {
+      "avg_probability": 1.6526993931620382e-05,
+      "is_beard": false,
+      "confidence": 0.9999834895133972,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "265": {
+      "avg_probability": 0.005551184993237257,
+      "is_beard": false,
+      "confidence": 0.9944488406181335,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "266": {
+      "avg_probability": 0.016255265101790428,
+      "is_beard": false,
+      "confidence": 0.983744740486145,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "267": {
+      "avg_probability": 0.6714115142822266,
+      "is_beard": true,
+      "confidence": 0.6714115142822266,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "268": {
+      "avg_probability": 0.7302447557449341,
+      "is_beard": true,
+      "confidence": 0.7302447557449341,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "269": {
+      "avg_probability": 0.5183230042457581,
+      "is_beard": true,
+      "confidence": 0.5183230042457581,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "270": {
+      "avg_probability": 0.5699958801269531,
+      "is_beard": true,
+      "confidence": 0.5699958801269531,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "271": {
+      "avg_probability": 0.5979639887809753,
+      "is_beard": true,
+      "confidence": 0.5979639887809753,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "272": {
+      "avg_probability": 0.600574254989624,
+      "is_beard": true,
+      "confidence": 0.600574254989624,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "273": {
+      "avg_probability": 0.7569022178649902,
+      "is_beard": true,
+      "confidence": 0.7569022178649902,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "274": {
+      "avg_probability": 0.11194979399442673,
+      "is_beard": false,
+      "confidence": 0.8880501985549927,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "275": {
+      "avg_probability": 0.004348759073764086,
+      "is_beard": false,
+      "confidence": 0.9956512451171875,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "276": {
+      "avg_probability": 2.7943180612055585e-05,
+      "is_beard": false,
+      "confidence": 0.9999720454216003,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "277": {
+      "avg_probability": 1.304840679949848e-05,
+      "is_beard": false,
+      "confidence": 0.9999869465827942,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "278": {
+      "avg_probability": 0.0005701224436052144,
+      "is_beard": false,
+      "confidence": 0.9994298815727234,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "279": {
+      "avg_probability": 0.00016672305355314165,
+      "is_beard": false,
+      "confidence": 0.9998332858085632,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "280": {
+      "avg_probability": 0.06701240688562393,
+      "is_beard": false,
+      "confidence": 0.9329875707626343,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "281": {
+      "avg_probability": 0.0006159603944979608,
+      "is_beard": false,
+      "confidence": 0.9993840456008911,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "282": {
+      "avg_probability": 5.19657987751998e-06,
+      "is_beard": false,
+      "confidence": 0.9999948143959045,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "283": {
+      "avg_probability": 5.2620612223108765e-06,
+      "is_beard": false,
+      "confidence": 0.9999947547912598,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "284": {
+      "avg_probability": 4.667061546115292e-07,
+      "is_beard": false,
+      "confidence": 0.9999995231628418,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "285": {
+      "avg_probability": 4.756422640639357e-06,
+      "is_beard": false,
+      "confidence": 0.999995231628418,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "286": {
+      "avg_probability": 9.407024663232733e-06,
+      "is_beard": false,
+      "confidence": 0.9999905824661255,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "287": {
+      "avg_probability": 0.587478518486023,
+      "is_beard": true,
+      "confidence": 0.587478518486023,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "288": {
+      "avg_probability": 0.20480777323246002,
+      "is_beard": false,
+      "confidence": 0.7951922416687012,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "289": {
+      "avg_probability": 0.013118433766067028,
+      "is_beard": false,
+      "confidence": 0.9868815541267395,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "290": {
+      "avg_probability": 0.023226169869303703,
+      "is_beard": false,
+      "confidence": 0.9767738580703735,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "291": {
+      "avg_probability": 0.5761552453041077,
+      "is_beard": true,
+      "confidence": 0.5761552453041077,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "292": {
+      "avg_probability": 0.5864365100860596,
+      "is_beard": true,
+      "confidence": 0.5864365100860596,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "293": {
+      "avg_probability": 5.846734893566463e-06,
+      "is_beard": false,
+      "confidence": 0.999994158744812,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "294": {
+      "avg_probability": 0.001546923303976655,
+      "is_beard": false,
+      "confidence": 0.9984530806541443,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "295": {
+      "avg_probability": 2.5435547286178917e-06,
+      "is_beard": false,
+      "confidence": 0.9999974370002747,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "296": {
+      "avg_probability": 1.886927020677831e-05,
+      "is_beard": false,
+      "confidence": 0.9999811053276062,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "297": {
+      "avg_probability": 9.599510804036981e-07,
+      "is_beard": false,
+      "confidence": 0.9999990463256836,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "298": {
+      "avg_probability": 1.2150268275945564e-06,
+      "is_beard": false,
+      "confidence": 0.9999988079071045,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "299": {
+      "avg_probability": 7.4590861913748085e-06,
+      "is_beard": false,
+      "confidence": 0.9999925494194031,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "300": {
+      "avg_probability": 9.326414328825194e-06,
+      "is_beard": false,
+      "confidence": 0.999990701675415,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "301": {
+      "avg_probability": 2.75696811513626e-06,
+      "is_beard": false,
+      "confidence": 0.9999972581863403,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "302": {
+      "avg_probability": 0.5955991148948669,
+      "is_beard": true,
+      "confidence": 0.5955991148948669,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "303": {
+      "avg_probability": 0.4188571572303772,
+      "is_beard": false,
+      "confidence": 0.5811428427696228,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "304": {
+      "avg_probability": 0.6022505164146423,
+      "is_beard": true,
+      "confidence": 0.6022505164146423,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "305": {
+      "avg_probability": 0.04227365925908089,
+      "is_beard": false,
+      "confidence": 0.9577263593673706,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "306": {
+      "avg_probability": 0.6004089117050171,
+      "is_beard": true,
+      "confidence": 0.6004089117050171,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "307": {
+      "avg_probability": 0.7642255425453186,
+      "is_beard": true,
+      "confidence": 0.7642255425453186,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "308": {
+      "avg_probability": 0.6453637480735779,
+      "is_beard": true,
+      "confidence": 0.6453637480735779,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "309": {
+      "avg_probability": 0.024045929312705994,
+      "is_beard": false,
+      "confidence": 0.9759540557861328,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "310": {
+      "avg_probability": 0.5888336896896362,
+      "is_beard": true,
+      "confidence": 0.5888336896896362,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "311": {
+      "avg_probability": 0.5948001146316528,
+      "is_beard": true,
+      "confidence": 0.5948001146316528,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "312": {
+      "avg_probability": 0.7982664704322815,
+      "is_beard": true,
+      "confidence": 0.7982664704322815,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "313": {
+      "avg_probability": 0.8596950769424438,
+      "is_beard": true,
+      "confidence": 0.8596950769424438,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "314": {
+      "avg_probability": 0.6201071739196777,
+      "is_beard": true,
+      "confidence": 0.6201071739196777,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "315": {
+      "avg_probability": 0.6131909489631653,
+      "is_beard": true,
+      "confidence": 0.6131909489631653,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "316": {
+      "avg_probability": 0.6738342046737671,
+      "is_beard": true,
+      "confidence": 0.6738342046737671,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "317": {
+      "avg_probability": 0.7992862462997437,
+      "is_beard": true,
+      "confidence": 0.7992862462997437,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "318": {
+      "avg_probability": 0.587738037109375,
+      "is_beard": true,
+      "confidence": 0.587738037109375,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "319": {
+      "avg_probability": 0.5942445993423462,
+      "is_beard": true,
+      "confidence": 0.5942445993423462,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "320": {
+      "avg_probability": 0.6177899241447449,
+      "is_beard": true,
+      "confidence": 0.6177899241447449,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "321": {
+      "avg_probability": 0.7934787273406982,
+      "is_beard": true,
+      "confidence": 0.7934787273406982,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "322": {
+      "avg_probability": 0.2829402685165405,
+      "is_beard": false,
+      "confidence": 0.7170597314834595,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "323": {
+      "avg_probability": 0.02492024190723896,
+      "is_beard": false,
+      "confidence": 0.9750797748565674,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "324": {
+      "avg_probability": 0.6789327263832092,
+      "is_beard": true,
+      "confidence": 0.6789327263832092,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "325": {
+      "avg_probability": 0.7662961483001709,
+      "is_beard": true,
+      "confidence": 0.7662961483001709,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "326": {
+      "avg_probability": 0.14348068833351135,
+      "is_beard": false,
+      "confidence": 0.856519341468811,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "327": {
+      "avg_probability": 0.009131817147135735,
+      "is_beard": false,
+      "confidence": 0.9908682107925415,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "328": {
+      "avg_probability": 0.02277853526175022,
+      "is_beard": false,
+      "confidence": 0.9772214889526367,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "329": {
+      "avg_probability": 0.0001534781913505867,
+      "is_beard": false,
+      "confidence": 0.9998465180397034,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "330": {
+      "avg_probability": 0.0023245334159582853,
+      "is_beard": false,
+      "confidence": 0.9976754784584045,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "331": {
+      "avg_probability": 0.0009644816746003926,
+      "is_beard": false,
+      "confidence": 0.9990355372428894,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "332": {
+      "avg_probability": 1.066792719939258e-06,
+      "is_beard": false,
+      "confidence": 0.999998927116394,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "333": {
+      "avg_probability": 6.349301315822231e-07,
+      "is_beard": false,
+      "confidence": 0.9999993443489075,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "334": {
+      "avg_probability": 1.0633549209160265e-05,
+      "is_beard": false,
+      "confidence": 0.99998939037323,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "335": {
+      "avg_probability": 0.7931599617004395,
+      "is_beard": true,
+      "confidence": 0.7931599617004395,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "336": {
+      "avg_probability": 5.046470505476464e-06,
+      "is_beard": false,
+      "confidence": 0.9999949336051941,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "337": {
+      "avg_probability": 1.4947479485272197e-06,
+      "is_beard": false,
+      "confidence": 0.9999985098838806,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "338": {
+      "avg_probability": 4.456565818600211e-07,
+      "is_beard": false,
+      "confidence": 0.9999995827674866,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "339": {
+      "avg_probability": 0.0008376898476853967,
+      "is_beard": false,
+      "confidence": 0.9991623163223267,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "340": {
+      "avg_probability": 0.01115915086120367,
+      "is_beard": false,
+      "confidence": 0.9888408780097961,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "341": {
+      "avg_probability": 3.9573093090439215e-05,
+      "is_beard": false,
+      "confidence": 0.9999604225158691,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "342": {
+      "avg_probability": 0.00015595178410876542,
+      "is_beard": false,
+      "confidence": 0.9998440742492676,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "343": {
+      "avg_probability": 3.717278013937175e-05,
+      "is_beard": false,
+      "confidence": 0.9999628067016602,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "344": {
+      "avg_probability": 0.0033210667315870523,
+      "is_beard": false,
+      "confidence": 0.9966789484024048,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "345": {
+      "avg_probability": 0.0007715455139987171,
+      "is_beard": false,
+      "confidence": 0.9992284774780273,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "346": {
+      "avg_probability": 0.00015829563199076802,
+      "is_beard": false,
+      "confidence": 0.9998416900634766,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "347": {
+      "avg_probability": 0.021892426535487175,
+      "is_beard": false,
+      "confidence": 0.9781075716018677,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "348": {
+      "avg_probability": 0.0005985219031572342,
+      "is_beard": false,
+      "confidence": 0.9994014501571655,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "349": {
+      "avg_probability": 1.8910403014160693e-05,
+      "is_beard": false,
+      "confidence": 0.9999811053276062,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "350": {
+      "avg_probability": 0.0001791654503904283,
+      "is_beard": false,
+      "confidence": 0.9998208284378052,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "351": {
+      "avg_probability": 3.744622154044919e-05,
+      "is_beard": false,
+      "confidence": 0.999962568283081,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "352": {
+      "avg_probability": 0.00045100649003870785,
+      "is_beard": false,
+      "confidence": 0.9995489716529846,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "353": {
+      "avg_probability": 4.4265987526159734e-05,
+      "is_beard": false,
+      "confidence": 0.9999557137489319,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "354": {
+      "avg_probability": 0.19902952015399933,
+      "is_beard": false,
+      "confidence": 0.8009704947471619,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "355": {
+      "avg_probability": 2.5631730750319548e-05,
+      "is_beard": false,
+      "confidence": 0.9999743700027466,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "356": {
+      "avg_probability": 2.6578740289551206e-05,
+      "is_beard": false,
+      "confidence": 0.9999734163284302,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "357": {
+      "avg_probability": 3.190576171618886e-05,
+      "is_beard": false,
+      "confidence": 0.9999681115150452,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "358": {
+      "avg_probability": 0.001485237036831677,
+      "is_beard": false,
+      "confidence": 0.9985147714614868,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "359": {
+      "avg_probability": 0.0008824929245747626,
+      "is_beard": false,
+      "confidence": 0.9991174936294556,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "360": {
+      "avg_probability": 9.910723747452721e-05,
+      "is_beard": false,
+      "confidence": 0.9999008774757385,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "361": {
+      "avg_probability": 0.07267125695943832,
+      "is_beard": false,
+      "confidence": 0.9273287653923035,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "362": {
+      "avg_probability": 2.3909924493636936e-05,
+      "is_beard": false,
+      "confidence": 0.9999760985374451,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "363": {
+      "avg_probability": 0.00037431606324389577,
+      "is_beard": false,
+      "confidence": 0.9996256828308105,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "364": {
+      "avg_probability": 0.40511783957481384,
+      "is_beard": false,
+      "confidence": 0.5948821306228638,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "365": {
+      "avg_probability": 0.2044055014848709,
+      "is_beard": false,
+      "confidence": 0.7955945134162903,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "366": {
+      "avg_probability": 6.8020381149835885e-06,
+      "is_beard": false,
+      "confidence": 0.9999932050704956,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "367": {
+      "avg_probability": 0.20805442333221436,
+      "is_beard": false,
+      "confidence": 0.7919455766677856,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "368": {
+      "avg_probability": 4.871571036346722e-06,
+      "is_beard": false,
+      "confidence": 0.9999951124191284,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "369": {
+      "avg_probability": 0.4063878357410431,
+      "is_beard": false,
+      "confidence": 0.5936121940612793,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "370": {
+      "avg_probability": 0.2050466388463974,
+      "is_beard": false,
+      "confidence": 0.7949533462524414,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "371": {
+      "avg_probability": 0.0005080983391962945,
+      "is_beard": false,
+      "confidence": 0.9994919300079346,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "372": {
+      "avg_probability": 0.0009292835020460188,
+      "is_beard": false,
+      "confidence": 0.9990707039833069,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "373": {
+      "avg_probability": 0.004588218871504068,
+      "is_beard": false,
+      "confidence": 0.99541175365448,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "374": {
+      "avg_probability": 0.0012406774330884218,
+      "is_beard": false,
+      "confidence": 0.9987593293190002,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "375": {
+      "avg_probability": 0.6772366166114807,
+      "is_beard": true,
+      "confidence": 0.6772366166114807,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "376": {
+      "avg_probability": 0.013021903112530708,
+      "is_beard": false,
+      "confidence": 0.9869781136512756,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "377": {
+      "avg_probability": 0.40576428174972534,
+      "is_beard": false,
+      "confidence": 0.5942357182502747,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "378": {
+      "avg_probability": 0.4063611328601837,
+      "is_beard": false,
+      "confidence": 0.5936388969421387,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "379": {
+      "avg_probability": 0.351439505815506,
+      "is_beard": false,
+      "confidence": 0.6485605239868164,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "380": {
+      "avg_probability": 1.827687992772553e-05,
+      "is_beard": false,
+      "confidence": 0.999981701374054,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "381": {
+      "avg_probability": 0.00013201207912061363,
+      "is_beard": false,
+      "confidence": 0.9998679757118225,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "382": {
+      "avg_probability": 4.423659993335605e-05,
+      "is_beard": false,
+      "confidence": 0.9999557733535767,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "383": {
+      "avg_probability": 6.922060128999874e-05,
+      "is_beard": false,
+      "confidence": 0.9999307990074158,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "384": {
+      "avg_probability": 7.592216570628807e-05,
+      "is_beard": false,
+      "confidence": 0.9999240636825562,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "385": {
+      "avg_probability": 0.0006680862279608846,
+      "is_beard": false,
+      "confidence": 0.9993318915367126,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "386": {
+      "avg_probability": 0.003606227459385991,
+      "is_beard": false,
+      "confidence": 0.9963937997817993,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "387": {
+      "avg_probability": 0.002438789699226618,
+      "is_beard": false,
+      "confidence": 0.9975612163543701,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "388": {
+      "avg_probability": 0.006753216031938791,
+      "is_beard": false,
+      "confidence": 0.9932467937469482,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "389": {
+      "avg_probability": 7.87687094998546e-05,
+      "is_beard": false,
+      "confidence": 0.9999212026596069,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "390": {
+      "avg_probability": 0.006703440565615892,
+      "is_beard": false,
+      "confidence": 0.9932965636253357,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "391": {
+      "avg_probability": 0.16536051034927368,
+      "is_beard": false,
+      "confidence": 0.8346394896507263,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "392": {
+      "avg_probability": 0.012124283239245415,
+      "is_beard": false,
+      "confidence": 0.9878756999969482,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "393": {
+      "avg_probability": 0.3741791546344757,
+      "is_beard": false,
+      "confidence": 0.6258208751678467,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "394": {
+      "avg_probability": 0.4080035984516144,
+      "is_beard": false,
+      "confidence": 0.591996431350708,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "395": {
+      "avg_probability": 0.4064284861087799,
+      "is_beard": false,
+      "confidence": 0.5935715436935425,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "396": {
+      "avg_probability": 0.6493578553199768,
+      "is_beard": true,
+      "confidence": 0.6493578553199768,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "397": {
+      "avg_probability": 0.20382064580917358,
+      "is_beard": false,
+      "confidence": 0.7961793541908264,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "398": {
+      "avg_probability": 7.987616845639423e-05,
+      "is_beard": false,
+      "confidence": 0.999920129776001,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "399": {
+      "avg_probability": 4.9667733037495054e-06,
+      "is_beard": false,
+      "confidence": 0.9999950528144836,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "400": {
+      "avg_probability": 0.40633243322372437,
+      "is_beard": false,
+      "confidence": 0.5936675667762756,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "401": {
+      "avg_probability": 0.0038436211179941893,
+      "is_beard": false,
+      "confidence": 0.9961563944816589,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "402": {
+      "avg_probability": 0.5568150877952576,
+      "is_beard": true,
+      "confidence": 0.5568150877952576,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "403": {
+      "avg_probability": 0.5180960297584534,
+      "is_beard": true,
+      "confidence": 0.5180960297584534,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "404": {
+      "avg_probability": 0.5677035450935364,
+      "is_beard": true,
+      "confidence": 0.5677035450935364,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "405": {
+      "avg_probability": 0.563605546951294,
+      "is_beard": true,
+      "confidence": 0.563605546951294,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "406": {
+      "avg_probability": 0.8000097274780273,
+      "is_beard": true,
+      "confidence": 0.8000097274780273,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "407": {
+      "avg_probability": 0.7513927817344666,
+      "is_beard": true,
+      "confidence": 0.7513927817344666,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "408": {
+      "avg_probability": 0.7389824986457825,
+      "is_beard": true,
+      "confidence": 0.7389824986457825,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "409": {
+      "avg_probability": 0.644150972366333,
+      "is_beard": true,
+      "confidence": 0.644150972366333,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "410": {
+      "avg_probability": 0.5790852308273315,
+      "is_beard": true,
+      "confidence": 0.5790852308273315,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "411": {
+      "avg_probability": 0.1993902027606964,
+      "is_beard": false,
+      "confidence": 0.800609827041626,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "412": {
+      "avg_probability": 6.648933049291372e-05,
+      "is_beard": false,
+      "confidence": 0.9999334812164307,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "413": {
+      "avg_probability": 8.456259092781693e-05,
+      "is_beard": false,
+      "confidence": 0.9999154210090637,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "414": {
+      "avg_probability": 1.9234623323427513e-05,
+      "is_beard": false,
+      "confidence": 0.9999807476997375,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "415": {
+      "avg_probability": 0.638449490070343,
+      "is_beard": true,
+      "confidence": 0.638449490070343,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "416": {
+      "avg_probability": 0.3857794404029846,
+      "is_beard": false,
+      "confidence": 0.6142205595970154,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "417": {
+      "avg_probability": 0.001058153691701591,
+      "is_beard": false,
+      "confidence": 0.9989418387413025,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "418": {
+      "avg_probability": 0.8011217713356018,
+      "is_beard": true,
+      "confidence": 0.8011217713356018,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "419": {
+      "avg_probability": 1.5177580280578695e-05,
+      "is_beard": false,
+      "confidence": 0.9999848008155823,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "420": {
+      "avg_probability": 5.980892456136644e-05,
+      "is_beard": false,
+      "confidence": 0.9999402165412903,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "421": {
+      "avg_probability": 0.8009366989135742,
+      "is_beard": true,
+      "confidence": 0.8009366989135742,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "422": {
+      "avg_probability": 0.6033885478973389,
+      "is_beard": true,
+      "confidence": 0.6033885478973389,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "423": {
+      "avg_probability": 0.023409875109791756,
+      "is_beard": false,
+      "confidence": 0.976590096950531,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "424": {
+      "avg_probability": 0.7694731950759888,
+      "is_beard": true,
+      "confidence": 0.7694731950759888,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "425": {
+      "avg_probability": 0.1614636778831482,
+      "is_beard": false,
+      "confidence": 0.8385363221168518,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "426": {
+      "avg_probability": 0.29374179244041443,
+      "is_beard": false,
+      "confidence": 0.7062581777572632,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "427": {
+      "avg_probability": 0.15955431759357452,
+      "is_beard": false,
+      "confidence": 0.8404456973075867,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "428": {
+      "avg_probability": 0.8009647130966187,
+      "is_beard": true,
+      "confidence": 0.8009647130966187,
+      "vote_count": 4,
+      "total_views": 5
+    },
+    "429": {
+      "avg_probability": 7.076441397657618e-05,
+      "is_beard": false,
+      "confidence": 0.9999292492866516,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "430": {
+      "avg_probability": 0.415629118680954,
+      "is_beard": false,
+      "confidence": 0.5843708515167236,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "431": {
+      "avg_probability": 0.4843222200870514,
+      "is_beard": false,
+      "confidence": 0.515677809715271,
+      "vote_count": 2,
+      "total_views": 5
+    },
+    "432": {
+      "avg_probability": 0.5914410948753357,
+      "is_beard": true,
+      "confidence": 0.5914410948753357,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "433": {
+      "avg_probability": 0.002332522766664624,
+      "is_beard": false,
+      "confidence": 0.9976674914360046,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "434": {
+      "avg_probability": 0.20992614328861237,
+      "is_beard": false,
+      "confidence": 0.7900738716125488,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "435": {
+      "avg_probability": 0.20380374789237976,
+      "is_beard": false,
+      "confidence": 0.7961962223052979,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "436": {
+      "avg_probability": 0.5840277671813965,
+      "is_beard": true,
+      "confidence": 0.5840277671813965,
+      "vote_count": 3,
+      "total_views": 5
+    },
+    "437": {
+      "avg_probability": 6.319070052995812e-06,
+      "is_beard": false,
+      "confidence": 0.9999936819076538,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "438": {
+      "avg_probability": 0.04248069226741791,
+      "is_beard": false,
+      "confidence": 0.9575192928314209,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "439": {
+      "avg_probability": 0.0024101499002426863,
+      "is_beard": false,
+      "confidence": 0.9975898265838623,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "440": {
+      "avg_probability": 0.001454532495699823,
+      "is_beard": false,
+      "confidence": 0.9985454678535461,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "441": {
+      "avg_probability": 6.923808996361913e-06,
+      "is_beard": false,
+      "confidence": 0.999993085861206,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "442": {
+      "avg_probability": 3.2199259294429794e-05,
+      "is_beard": false,
+      "confidence": 0.9999678134918213,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "443": {
+      "avg_probability": 9.412663530383725e-06,
+      "is_beard": false,
+      "confidence": 0.9999905824661255,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "444": {
+      "avg_probability": 9.257747478841338e-06,
+      "is_beard": false,
+      "confidence": 0.9999907612800598,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "445": {
+      "avg_probability": 9.396027598995715e-05,
+      "is_beard": false,
+      "confidence": 0.999906063079834,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "446": {
+      "avg_probability": 0.0026839724741876125,
+      "is_beard": false,
+      "confidence": 0.9973160028457642,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "447": {
+      "avg_probability": 0.00011344528320478275,
+      "is_beard": false,
+      "confidence": 0.9998865723609924,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "448": {
+      "avg_probability": 0.0039271204732358456,
+      "is_beard": false,
+      "confidence": 0.9960728883743286,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "449": {
+      "avg_probability": 0.001712546218186617,
+      "is_beard": false,
+      "confidence": 0.9982874393463135,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "450": {
+      "avg_probability": 0.0005806928384117782,
+      "is_beard": false,
+      "confidence": 0.9994193315505981,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "451": {
+      "avg_probability": 1.997643084905576e-05,
+      "is_beard": false,
+      "confidence": 0.9999800324440002,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "452": {
+      "avg_probability": 3.0275070457719266e-05,
+      "is_beard": false,
+      "confidence": 0.9999697208404541,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "453": {
+      "avg_probability": 4.663597064791247e-05,
+      "is_beard": false,
+      "confidence": 0.9999533891677856,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "454": {
+      "avg_probability": 0.0009199897176586092,
+      "is_beard": false,
+      "confidence": 0.9990800023078918,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "455": {
+      "avg_probability": 0.0032733615953475237,
+      "is_beard": false,
+      "confidence": 0.9967266321182251,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "456": {
+      "avg_probability": 1.4323942195915151e-05,
+      "is_beard": false,
+      "confidence": 0.9999856948852539,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "457": {
+      "avg_probability": 0.005533885210752487,
+      "is_beard": false,
+      "confidence": 0.9944661259651184,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "458": {
+      "avg_probability": 0.04601745679974556,
+      "is_beard": false,
+      "confidence": 0.9539825320243835,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "459": {
+      "avg_probability": 0.007754888851195574,
+      "is_beard": false,
+      "confidence": 0.9922451376914978,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "460": {
+      "avg_probability": 0.020059071481227875,
+      "is_beard": false,
+      "confidence": 0.9799409508705139,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "461": {
+      "avg_probability": 0.15829887986183167,
+      "is_beard": false,
+      "confidence": 0.8417011499404907,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "462": {
+      "avg_probability": 0.1814240962266922,
+      "is_beard": false,
+      "confidence": 0.818575918674469,
+      "vote_count": 1,
+      "total_views": 5
+    },
+    "463": {
+      "avg_probability": 1.9741710275411606e-05,
+      "is_beard": false,
+      "confidence": 0.9999802708625793,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "464": {
+      "avg_probability": 1.3109483006701339e-05,
+      "is_beard": false,
+      "confidence": 0.9999868869781494,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "465": {
+      "avg_probability": 4.4957796490052715e-05,
+      "is_beard": false,
+      "confidence": 0.9999550580978394,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "466": {
+      "avg_probability": 0.019480353221297264,
+      "is_beard": false,
+      "confidence": 0.9805196523666382,
+      "vote_count": 0,
+      "total_views": 5
+    },
+    "467": {
+      "avg_probability": 0.0003594107984099537,
+      "is_beard": false,
+      "confidence": 0.9996405839920044,
+      "vote_count": 0,
+      "total_views": 5
+    }
+  },
+  "num_source_images": 5
+}

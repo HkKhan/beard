@@ -1,0 +1,338 @@
+import { useState, useCallback, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaceTracker } from './FaceTracker'
+import { useBeardStore, BeardTemplate } from '../store/beardStore'
+import { videoFrameToBase64 } from '../utils/api'
+
+type ScanPhase = 'intro' | 'scanning' | 'processing' | 'complete' | 'error'
+
+interface ScanViewProps {
+  onComplete: () => void
+  onCancel: () => void
+}
+
+const TOTAL_FRAMES = 60
+const CAPTURE_INTERVAL = 100 // ms between captures
+
+export function ScanView({ onComplete, onCancel }: ScanViewProps) {
+  const [phase, setPhase] = useState<ScanPhase>('intro')
+  const [progress, setProgress] = useState(0)
+  const [frameCount, setFrameCount] = useState(0)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
+  const [instruction, setInstruction] = useState('Look straight ahead')
+  
+  const templateIdRef = useRef(`template_${Date.now()}`)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const landmarksRef = useRef<number[][] | null>(null)
+  const frameCountRef = useRef(0)
+  const isCapturingRef = useRef(false)
+  const captureIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  
+  const addTemplate = useBeardStore((s) => s.addTemplate)
+
+  const instructions = [
+    'Look straight ahead',
+    'Slowly turn left',
+    'Back to center',
+    'Slowly turn right', 
+    'Back to center',
+    'Tilt chin up slightly',
+    'Back to center',
+    'Tilt chin down slightly',
+    'Almost done...',
+  ]
+
+  // Capture a single frame - synchronously capture, async API call
+  const captureFrame = useCallback(async (): Promise<boolean> => {
+    const video = videoRef.current
+    const landmarks = landmarksRef.current
+    
+    if (!video || !landmarks || landmarks.length < 468) {
+      console.log('Waiting for face detection...', landmarks?.length)
+      return false
+    }
+    
+    try {
+      // Capture video frame
+      const imageBase64 = videoFrameToBase64(video)
+      const width = video.videoWidth
+      const height = video.videoHeight
+      
+      // Normalize landmarks to 0-1 range
+      const normalizedLandmarks = landmarks.map(([x, y]) => [x / width, y / height])
+      
+      // Send to backend
+      const response = await fetch('/api/template/add-frame?template_id=' + templateIdRef.current, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          image: imageBase64,
+          face_mesh_landmarks: normalizedLandmarks,
+          user_prompts: [],
+        }),
+      })
+      
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({ detail: 'Request failed' }))
+        console.error('Frame capture failed:', err.detail)
+        return false
+      }
+      
+      return true
+      
+    } catch (err) {
+      console.error('Frame capture error:', err)
+      return false
+    }
+  }, [])
+
+  // Start capturing when phase changes to scanning
+  useEffect(() => {
+    if (phase !== 'scanning') return
+    
+    isCapturingRef.current = true
+    frameCountRef.current = 0
+    setFrameCount(0)
+    setProgress(0)
+    
+    const runCapture = async () => {
+      if (!isCapturingRef.current) return
+      
+      const success = await captureFrame()
+      
+      if (success) {
+        frameCountRef.current++
+        const count = frameCountRef.current
+        setFrameCount(count)
+        setProgress((count / TOTAL_FRAMES) * 100)
+        
+        // Update instruction based on progress
+        const idx = Math.floor((count / TOTAL_FRAMES) * instructions.length)
+        setInstruction(instructions[Math.min(idx, instructions.length - 1)])
+        
+        if (count >= TOTAL_FRAMES) {
+          isCapturingRef.current = false
+          if (captureIntervalRef.current) {
+            clearInterval(captureIntervalRef.current)
+            captureIntervalRef.current = null
+          }
+          finalizeTemplate()
+          return
+        }
+      }
+    }
+    
+    // Start capture loop
+    captureIntervalRef.current = setInterval(runCapture, CAPTURE_INTERVAL)
+    
+    // Also run immediately
+    runCapture()
+    
+    return () => {
+      isCapturingRef.current = false
+      if (captureIntervalRef.current) {
+        clearInterval(captureIntervalRef.current)
+        captureIntervalRef.current = null
+      }
+    }
+  }, [phase, captureFrame])
+
+  const finalizeTemplate = async () => {
+    setPhase('processing')
+    
+    try {
+      console.log('[SCANVIEW] Starting finalize, template_id:', templateIdRef.current)
+      const response = await fetch('/api/template/finalize?template_id=' + templateIdRef.current + '&threshold=0.4', {
+        method: 'POST',
+      })
+      
+      console.log('[SCANVIEW] Finalize response status:', response.status, response.statusText)
+      
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('[SCANVIEW] Finalize error response:', errorText)
+        throw new Error(`Failed to finalize template: ${response.status} ${response.statusText}`)
+      }
+      
+      const result = await response.json()
+      console.log('[SCANVIEW] Finalize success, result:', result)
+      
+      const template: BeardTemplate = {
+        id: templateIdRef.current,
+        name: `Scan ${new Date().toLocaleDateString()}`,
+        createdAt: new Date().toISOString(),
+        beardVertexIndices: [],
+        boundaryVertexIndices: [],
+        calibrationViews: ['multi-angle'],
+        templateData: result.template_data,
+      }
+      
+      addTemplate(template)
+      setPhase('complete')
+      
+      setTimeout(onComplete, 1500)
+      
+    } catch (err) {
+      console.error('Finalize error:', err)
+      setErrorMsg(err instanceof Error ? err.message : 'Failed to create template')
+      setPhase('error')
+    }
+  }
+
+  // Handle landmarks from FaceTracker - just store them
+  const handleLandmarksUpdate = useCallback((
+    landmarks: number[][],
+    _width: number,
+    _height: number,
+    video?: HTMLVideoElement
+  ) => {
+    landmarksRef.current = landmarks
+    if (video) videoRef.current = video
+  }, [])
+
+  const startScan = () => {
+    setPhase('scanning')
+    setErrorMsg(null)
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="h-full flex flex-col"
+      style={{ background: '#000' }}
+    >
+      {/* Header - always visible */}
+      <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4 flex items-center justify-between bg-gradient-to-b from-black/80 to-transparent">
+        <button
+          onClick={onCancel}
+          className="text-white/80 hover:text-white flex items-center gap-2"
+        >
+          ← Cancel
+        </button>
+        
+        {phase === 'scanning' && (
+          <span className="text-white/60 text-sm">
+            Frame {frameCount}/{TOTAL_FRAMES}
+          </span>
+        )}
+      </header>
+
+      {/* Main content */}
+      <main className="flex-1 relative">
+        {/* Intro view */}
+        {phase === 'intro' && (
+          <div className="h-full flex flex-col items-center justify-center p-8 text-center">
+            <div className="w-24 h-24 mb-8 rounded-full border-2 border-white/30 flex items-center justify-center">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                <circle cx="12" cy="8" r="5" />
+                <path d="M20 21a8 8 0 1 0-16 0" />
+              </svg>
+            </div>
+            
+            <h2 className="text-2xl font-medium text-white mb-4">Scan Your Beard</h2>
+            <p className="text-white/60 max-w-md mb-8">
+              We'll capture your beard from multiple angles. Slowly move your head as instructed.
+            </p>
+            
+            <button
+              onClick={startScan}
+              className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-white/90"
+            >
+              Start Scanning
+            </button>
+          </div>
+        )}
+        
+        {/* Scanning view - FaceTracker is the main content */}
+        {phase === 'scanning' && (
+          <>
+            <FaceTracker
+              onLandmarksUpdate={handleLandmarksUpdate}
+              showMesh={true}
+              meshColor="rgba(255, 255, 255, 0.3)"
+            />
+            
+            {/* Overlay UI */}
+            <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center">
+              {/* Progress ring */}
+              <div className="relative">
+                <svg width="200" height="200" className="transform -rotate-90">
+                  <circle 
+                    cx="100" cy="100" r="90" 
+                    fill="none" 
+                    stroke="rgba(255,255,255,0.1)" 
+                    strokeWidth="4" 
+                  />
+                  <circle
+                    cx="100" cy="100" r="90" 
+                    fill="none"
+                    stroke="rgba(255,255,255,0.9)" 
+                    strokeWidth="4"
+                    strokeDasharray={`${(progress / 100) * 565} 565`}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-4xl font-light text-white">{Math.round(progress)}%</span>
+                </div>
+              </div>
+
+              {/* Instruction */}
+              <div className="absolute bottom-24 left-0 right-0 text-center">
+                <div className="inline-block px-6 py-3 rounded-full bg-black/60 backdrop-blur-sm">
+                  <span className="text-white text-lg">{instruction}</span>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+        
+        {/* Processing overlay */}
+        {phase === 'processing' && (
+          <div className="h-full flex flex-col items-center justify-center bg-black">
+            <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mb-6" />
+            <h3 className="text-xl font-medium text-white mb-2">Creating Template</h3>
+            <p className="text-white/60">Combining {frameCount} frames...</p>
+          </div>
+        )}
+        
+        {/* Complete overlay */}
+        {phase === 'complete' && (
+          <div className="h-full flex flex-col items-center justify-center bg-black">
+            <div className="w-20 h-20 mb-6 rounded-full bg-green-500 flex items-center justify-center">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-medium text-white mb-2">Template Created!</h3>
+            <p className="text-white/60">Your beard map is ready</p>
+          </div>
+        )}
+        
+        {/* Error view */}
+        {phase === 'error' && (
+          <div className="h-full flex flex-col items-center justify-center bg-black p-8 text-center">
+            <div className="w-20 h-20 mb-6 rounded-full bg-red-500/20 flex items-center justify-center">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M15 9l-6 6M9 9l6 6" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-medium text-white mb-2">Something went wrong</h3>
+            <p className="text-white/60 mb-6">{errorMsg}</p>
+            <button
+              onClick={() => setPhase('intro')}
+              className="px-6 py-2 rounded-full bg-white text-black font-medium"
+            >
+              Try Again
+            </button>
+          </div>
+        )}
+      </main>
+    </motion.div>
+  )
+}
+
+export default ScanView

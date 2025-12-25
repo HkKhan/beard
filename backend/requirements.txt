@@ -1,0 +1,31 @@
+# BeardAR Backend - Requirements
+# Optimized for Apple M3 with MPS acceleration
+
+# Core ML Framework
+torch>=2.1.0
+torchvision>=0.16.0
+
+# SAM Dependencies
+segment-anything @ git+https://github.com/facebookresearch/segment-anything.git
+
+# API Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.7
+
+# Image Processing
+opencv-python>=4.9.0
+numpy>=1.24.0
+Pillow>=10.2.0
+pycocotools>=2.0.7
+
+# Utilities
+pydantic>=2.5.0
+tqdm>=4.66.0
+scipy>=1.11.0
+
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+httpx>=0.26.0
+
