@@ -131,8 +131,8 @@ function HomeView({
             Perfect Lineup, Every Time
           </h2>
           <p className="mb-8" style={{ color: 'var(--text-secondary)' }}>
-            Scan your face to capture your ideal beard shape. 
-            Project it later when you need to trim.
+            Scan your face to create smooth beard templates.
+            Use live segmentation to see your beard in real-time.
           </p>
 
           {/* Actions */}
@@ -147,18 +147,16 @@ function HomeView({
               Scan New Template
             </button>
 
-            {hasTemplates && (
-              <button
-                onClick={onProject}
-                className="w-full py-3.5 px-6 rounded-xl font-medium border transition-smooth"
-                style={{ 
-                  borderColor: 'var(--border)',
-                  background: 'var(--bg-secondary)'
-                }}
-              >
-                Project Saved Template
-              </button>
-            )}
+            <button
+              onClick={onProject}
+              className="w-full py-3.5 px-6 rounded-xl font-medium border transition-smooth"
+              style={{
+                borderColor: 'var(--border)',
+                background: 'var(--bg-secondary)'
+              }}
+            >
+              Project Templates
+            </button>
             
             {/* Load Saved Scan */}
             {savedScans.length > 0 && (
@@ -166,14 +164,14 @@ function HomeView({
                 <h3 className="text-sm font-medium mb-3" style={{ color: 'var(--text-secondary)' }}>
                   Saved Scans (Load & Process)
                 </h3>
-                <div className="space-y-2">
+                <div className="max-h-40 overflow-y-auto space-y-2 custom-scrollbar">
                   {savedScans.map((scanId) => (
                     <button
                       key={scanId}
                       onClick={() => handleLoadScan(scanId)}
                       disabled={loadingScan}
                       className="w-full py-2 px-4 rounded-lg text-sm font-medium border transition-smooth disabled:opacity-50"
-                      style={{ 
+                      style={{
                         borderColor: 'var(--border)',
                         background: 'var(--bg-secondary)'
                       }}

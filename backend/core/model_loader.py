@@ -49,13 +49,16 @@ class ModelLoader:
     def _get_device(self) -> torch.device:
         """Get the best available device."""
         if torch.backends.mps.is_available():
-            print("✓ Using MPS (Metal Performance Shaders)")
+            print("SUCCESS: Using MPS (Metal Performance Shaders on Apple Silicon)")
             return torch.device("mps")
         elif torch.cuda.is_available():
-            print("✓ Using CUDA")
+            # Get GPU info for better logging
+            gpu_name = torch.cuda.get_device_name(0) if torch.cuda.device_count() > 0 else "Unknown GPU"
+            gpu_memory = torch.cuda.get_device_properties(0).total_memory / (1024**3) if torch.cuda.device_count() > 0 else 0
+            print(f"SUCCESS: Using CUDA on {gpu_name} ({gpu_memory:.1f}GB VRAM)")
             return torch.device("cuda")
         else:
-            print("⚠ Using CPU")
+            print("WARNING: Using CPU (no GPU acceleration available)")
             return torch.device("cpu")
     
     def load_model(
@@ -90,19 +93,39 @@ class ModelLoader:
         # Load fine-tuned weights if available
         if fine_tuned_path and os.path.exists(fine_tuned_path):
             print(f"Loading fine-tuned weights from: {fine_tuned_path}")
-            checkpoint = torch.load(fine_tuned_path, map_location=self.device)
+            checkpoint = torch.load(fine_tuned_path, map_location='cpu')  # Always load to CPU first
             self.model.load_state_dict(checkpoint['model_state_dict'])
             print(f"  Loaded from epoch {checkpoint.get('epoch', 'unknown')}")
             print(f"  Validation IoU: {checkpoint.get('val_iou', 'unknown')}")
-        
+
         # Move to device and set eval mode
+        print(f"Moving model to {self.device}...")
         self.model.to(self.device)
-        self.model.eval()
+
+        # Enable CUDA optimizations if using GPU
+        if self.device.type == "cuda":
+            self.model.eval()
+            # Warm up GPU with a small forward pass
+            print("Warming up GPU...")
+            with torch.no_grad():
+                dummy_input = torch.randn(1, 3, 224, 224).to(self.device)
+                try:
+                    _ = self.model.image_encoder(dummy_input)
+                    print("SUCCESS: GPU warmup completed")
+                except Exception as e:
+                    print(f"Warning: GPU warmup failed: {e}")
+        else:
+            self.model.eval()
         
         # Create predictor
         self.predictor = SamPredictor(self.model)
-        
-        print(f"✓ Model loaded successfully on {self.device}")
+
+        # Log memory usage if on GPU
+        if self.device.type == "cuda":
+            memory_allocated = torch.cuda.memory_allocated(self.device) / (1024**2)  # MB
+            memory_reserved = torch.cuda.memory_reserved(self.device) / (1024**2)   # MB
+            print(f"SUCCESS: GPU memory - Allocated: {memory_allocated:.1f}MB, Reserved: {memory_reserved:.1f}MB")
+        print(f"SUCCESS: Model loaded successfully on {self.device}")
     
     def is_loaded(self) -> bool:
         """Check if model is loaded."""

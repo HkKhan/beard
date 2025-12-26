@@ -74,7 +74,7 @@ async def lifespan(app: FastAPI):
     fine_tuned = FINE_TUNED_CHECKPOINT if os.path.exists(FINE_TUNED_CHECKPOINT) else None
     
     if not checkpoint:
-        print("\n⚠ SAM checkpoint not found!")
+        print("\nWARNING: SAM checkpoint not found!")
         print(f"  Expected: {SAM_CHECKPOINT}")
         print("  Download from: https://github.com/facebookresearch/segment-anything#model-checkpoints")
         print("  Place sam_vit_b_01ec64.pth in the checkpoints/ directory")
@@ -86,7 +86,7 @@ async def lifespan(app: FastAPI):
             fine_tuned_path=fine_tuned,
         )
     except Exception as e:
-        print(f"\n⚠ Failed to load model: {e}")
+        print(f"\nWARNING: Failed to load model: {e}")
         print("  Server will start but segmentation will not work")
     
     print("\n" + "="*50)
@@ -263,17 +263,16 @@ async def add_frame_to_template(
 ):
     """
     Add a single frame to the beard template being built.
-    
+
     Call this many times during the scan phase (e.g., 50-100 frames).
-    Each frame runs SAM and adds the mask to the accumulated template.
-    
+    Frames are stored for later batch SAM processing.
+
     **Input:**
     - `template_id`: Unique ID for this template (e.g., user ID + timestamp)
     - `request`: Image + face mesh landmarks
-    
+
     **Output:**
     - Frame count so far
-    - SAM confidence for this frame
     """
     # Log to file
     import time
@@ -289,90 +288,47 @@ async def add_frame_to_template(
         except:
             print(f"[ADD_FRAME] {msg}")
     
-    log(f"[ADD_FRAME] ===== ADDING FRAME =====")
+    log(f"[ADD_FRAME] ===== STORING FRAME =====")
     log(f"[ADD_FRAME] template_id={template_id}")
-    
-    model_loader = get_model_loader()
-    
-    if not model_loader.is_loaded():
-        log("[ADD_FRAME] ERROR: Model not loaded")
-        raise HTTPException(status_code=503, detail="Model not loaded")
-    
+
     try:
-        # Decode image
-        from api.segmentation import decode_base64_image
-        from api.live_segmentation import generate_beard_prompts_from_landmarks
-        import numpy as np
-        
-        image = decode_base64_image(request.image)
-        h, w = image.shape[:2]
-        
-        # Get landmarks
+        # Validate input
         if not request.face_mesh_landmarks or len(request.face_mesh_landmarks) < 468:
             raise HTTPException(status_code=400, detail="Face mesh landmarks required")
-        
-        landmarks = np.array(request.face_mesh_landmarks)
-        # Convert normalized to pixel if needed
-        if landmarks.max() <= 1.0:
-            landmarks[:, 0] *= w
-            landmarks[:, 1] *= h
-        
-        # Generate prompts and run SAM
-        pos_prompts, neg_prompts = generate_beard_prompts_from_landmarks(
-            request.face_mesh_landmarks, w, h
-        )
-        
-        all_points = np.array([list(p) for p in pos_prompts] + [list(p) for p in neg_prompts])
-        all_labels = np.array([1] * len(pos_prompts) + [0] * len(neg_prompts))
-        
-        masks, scores, _ = model_loader.predict(
-            image=image,
-            point_coords=all_points,
-            point_labels=all_labels,
-            multimask_output=True,
-        )
-        
-        best_idx = np.argmax(scores)
-        mask = masks[best_idx]
-        confidence = float(scores[best_idx])
-        
-        # Add to template builder
-        builder = get_or_create_template(template_id)
-        builder.add_frame(mask, landmarks, confidence, is_mirrored=True)
-        
-        # Encode mask for storage
-        import cv2
-        _, mask_buffer = cv2.imencode('.png', (mask * 255).astype(np.uint8))
-        mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
-        
-        # Save frame data (append to list in memory, will save on finalize)
+
+        # Store frame data for later batch processing
         frame_data = {
-            "image": request.image,
-            "face_mesh_landmarks": request.face_mesh_landmarks,
-            "sam_mask_base64": mask_b64,
-            "sam_confidence": confidence,
+            'image': request.image,
+            'face_mesh_landmarks': request.face_mesh_landmarks,
+            'timestamp': time.time()
         }
-        
-        # Store frame in memory cache
+
+        # Store in memory cache for this session
         if not hasattr(add_frame_to_template, '_frame_cache'):
             add_frame_to_template._frame_cache = {}
         if template_id not in add_frame_to_template._frame_cache:
             add_frame_to_template._frame_cache[template_id] = []
         add_frame_to_template._frame_cache[template_id].append(frame_data)
-        
-        # SAVE EVERY FRAME IMMEDIATELY - don't wait!
-        log(f"[ADD_FRAME] Attempting to save {builder.frame_count} frames...")
+
+        frame_count = len(add_frame_to_template._frame_cache[template_id])
+        log(f"[ADD_FRAME] Frame stored, total frames: {frame_count}")
+
+        return {
+            "frame_count": frame_count,
+            "message": "Frame stored for processing"
+        }
         try:
             from api.frame_storage import save_frames
             saved_path = save_frames(template_id, add_frame_to_template._frame_cache[template_id])
-            log(f"[ADD_FRAME] ✅ Saved {builder.frame_count} frames to {saved_path}")
+            log(f"[ADD_FRAME] SUCCESS: Saved {builder.frame_count} frames to {saved_path}")
             print(f"[SAVE] Saved {builder.frame_count} frames to disk for {template_id}")
         except Exception as save_err:
             import traceback
-            error_msg = f"{save_err}\n{traceback.format_exc()}"
-            log(f"[ADD_FRAME] ❌ SAVE ERROR: {error_msg}")
-            print(f"[SAVE ERROR] Failed to save frames: {save_err}")
-            print(traceback.format_exc())
+            # Sanitize error message to avoid Unicode issues
+            error_str = str(save_err).encode('ascii', 'ignore').decode('ascii')
+            log(f"[ADD_FRAME] SAVE ERROR: {error_str}")
+            print(f"[SAVE ERROR] Failed to save frames: {error_str}")
+            print("Full traceback available in backend.log")
         
         log(f"[ADD_FRAME] Returning success, frame_count={builder.frame_count}")
         return {
@@ -383,7 +339,7 @@ async def add_frame_to_template(
         
     except Exception as e:
         import traceback
-        log(f"[ADD_FRAME] ❌ EXCEPTION: {str(e)}\n{traceback.format_exc()}")
+        log(f"[ADD_FRAME] EXCEPTION: {str(e)}\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -465,6 +421,11 @@ async def finalize_template(template_id: str, threshold: float = 0.4):
         try:
             binary_mask, contour = builder.finalize(threshold)
             log_to_file(f"[FINALIZE_ENDPOINT] finalize() returned: binary_mask shape={binary_mask.shape}, contour length={len(contour)}")
+
+            # Save the finalized template for projection
+            from api.beard_template import save_template
+            save_template(template_id, builder)
+            log_to_file(f"[FINALIZE_ENDPOINT] Template saved for projection")
         except Exception as finalize_error:
             log_to_file(f"[FINALIZE_ENDPOINT] finalize() failed: {finalize_error}")
             # Still try to create template data if possible
@@ -474,6 +435,11 @@ async def finalize_template(template_id: str, threshold: float = 0.4):
                     # Try with a more lenient threshold
                     binary_mask, contour = builder.finalize(min(threshold + 0.2, 0.8))
                     log_to_file(f"[FINALIZE_ENDPOINT] Fallback finalize succeeded")
+
+                    # Save the finalized template for projection
+                    from api.beard_template import save_template
+                    save_template(template_id, builder)
+                    log_to_file(f"[FINALIZE_ENDPOINT] Template saved for projection (fallback)")
                 except Exception as fallback_error:
                     log_to_file(f"[FINALIZE_ENDPOINT] Fallback finalize also failed: {fallback_error}")
                     raise HTTPException(
@@ -526,6 +492,149 @@ async def finalize_template(template_id: str, threshold: float = 0.4):
         raise HTTPException(status_code=500, detail=f"Finalization failed: {str(e)}")
 
 
+@app.post("/template/process-frames")
+async def process_stored_frames(
+    template_id: str,
+    threshold: float = 0.4
+):
+    """
+    Process all stored frames with SAM to build comprehensive beard model.
+
+    Call this after scanning is complete, before finalization.
+    Runs SAM on all collected frames to create the full beard model.
+
+    **Input:**
+    - `template_id`: Template ID with stored frames
+    - `threshold`: SAM confidence threshold
+
+    **Output:**
+    - Processing status and frame count
+    """
+    import time
+    from pathlib import Path
+    log_file = Path(__file__).parent.parent / "backend.log"
+
+    def log(msg):
+        try:
+            with open(log_file, 'a', encoding='utf-8') as f:
+                f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {msg}\n")
+                f.flush()
+            print(f"[PROCESS_FRAMES] {msg}")
+        except:
+            print(f"[PROCESS_FRAMES] {msg}")
+
+    log(f"[PROCESS_FRAMES] ===== PROCESSING STORED FRAMES =====")
+    log(f"[PROCESS_FRAMES] template_id={template_id}, threshold={threshold}")
+
+    # Check if frames are stored
+    if not hasattr(add_frame_to_template, '_frame_cache') or template_id not in add_frame_to_template._frame_cache:
+        log("[PROCESS_FRAMES] ERROR: No stored frames found")
+        raise HTTPException(status_code=404, detail="No stored frames found for this template")
+
+    stored_frames = add_frame_to_template._frame_cache[template_id]
+    frame_count = len(stored_frames)
+
+    if frame_count == 0:
+        log("[PROCESS_FRAMES] ERROR: No frames to process")
+        raise HTTPException(status_code=400, detail="No frames to process")
+
+    log(f"[PROCESS_FRAMES] Processing {frame_count} stored frames")
+
+    try:
+        # Load SAM model
+        model_loader = get_model_loader()
+        if not model_loader.is_loaded():
+            log("[PROCESS_FRAMES] ERROR: Model not loaded")
+            raise HTTPException(status_code=503, detail="Model not loaded")
+
+        # Get or create template builder
+        builder = get_or_create_template(template_id)
+
+        # Process each stored frame with SAM
+        processed_count = 0
+        total_confidence = 0.0
+
+        for i, frame_data in enumerate(stored_frames):
+            try:
+                log(f"[PROCESS_FRAMES] Processing frame {i+1}/{frame_count}")
+
+                # Decode image
+                from api.segmentation import decode_base64_image
+                from api.live_segmentation import generate_beard_prompts_from_landmarks
+                import numpy as np
+
+                image = decode_base64_image(frame_data['image'])
+                h, w = image.shape[:2]
+
+                # Get landmarks
+                landmarks = np.array(frame_data['face_mesh_landmarks'])
+                if landmarks.max() <= 1.0:
+                    landmarks[:, 0] *= w
+                    landmarks[:, 1] *= h
+
+                # Generate prompts and run SAM
+                pos_prompts, neg_prompts = generate_beard_prompts_from_landmarks(
+                    frame_data['face_mesh_landmarks'], w, h
+                )
+
+                all_points = np.array([list(p) for p in pos_prompts] + [list(p) for p in neg_prompts])
+                all_labels = np.array([1] * len(pos_prompts) + [0] * len(neg_prompts))
+
+                masks, scores, _ = model_loader.predict(
+                    image=image,
+                    point_coords=all_points,
+                    point_labels=all_labels,
+                    multimask_output=True,
+                )
+
+                best_idx = np.argmax(scores)
+                mask = masks[best_idx]
+                confidence = float(scores[best_idx])
+
+                # Add to template builder
+                builder.add_frame(mask, landmarks, confidence, is_mirrored=True)
+
+                processed_count += 1
+                total_confidence += confidence
+
+                log(f"[PROCESS_FRAMES] Frame {i+1} processed, confidence: {confidence:.3f}")
+
+            except Exception as frame_error:
+                log(f"[PROCESS_FRAMES] ERROR processing frame {i+1}: {str(frame_error)}")
+                continue
+
+        avg_confidence = total_confidence / processed_count if processed_count > 0 else 0
+
+        log(f"[PROCESS_FRAMES] Completed: {processed_count}/{frame_count} frames processed")
+        log(f"[PROCESS_FRAMES] Average confidence: {avg_confidence:.3f}")
+
+        # Save the processed template
+        from api.beard_template import save_template
+        save_template(template_id, builder)
+
+        # Clear the stored frames (no longer needed)
+        del add_frame_to_template._frame_cache[template_id]
+
+        return {
+            "success": True,
+            "frames_processed": processed_count,
+            "total_frames": frame_count,
+            "average_confidence": avg_confidence,
+            "template_saved": True
+        }
+
+    except Exception as e:
+        log(f"[PROCESS_FRAMES] ERROR: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Frame processing failed: {str(e)}")
+
+
+@app.get("/template/list")
+async def list_templates():
+    """List all available templates."""
+    from api.beard_template import _templates
+    return {"templates": list(_templates.keys())}
+
+
 @app.post("/template/project")
 async def project_template(
     template_id: str,
@@ -536,46 +645,88 @@ async def project_template(
 ):
     """
     Project a finalized template onto a face.
-    
-    This just warps the pre-computed template - no SAM inference needed!
+
+    This uses pose-specific SAM masks for accurate projection!
     Very fast (~1ms) compared to live SAM (~100ms).
-    
+
     **Input:**
     - `template_id`: ID of the finalized template
     - `landmarks`: Current face mesh landmarks (468 points)
     - `image_width`, `image_height`: Size of target image
     - `is_mirrored`: Whether the webcam feed is mirrored
-    
+
     **Output:**
     - Contour points in image coordinates for drawing
     """
-    import numpy as np
-    
-    builder = get_beard_template(template_id)
-    if not builder:
-        raise HTTPException(status_code=404, detail="Template not found")
-    
-    if builder.final_template is None:
-        raise HTTPException(status_code=400, detail="Template not finalized")
-    
+    # Enhanced logging
+    import time
+    from pathlib import Path
+    log_file = Path(__file__).parent.parent / "backend.log"
+
+    def log(msg):
+        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+        try:
+            with open(log_file, 'a', encoding='utf-8') as f:
+                f.write(f"{timestamp} - {msg}\n")
+                f.flush()
+        except:
+            pass  # Ignore file write errors
+        print(f"[{timestamp}] [PROJECT] {msg}")
+
+    log(f"===== STARTING PROJECTION =====")
+    log(f"template_id={template_id}, image_size={image_width}x{image_height}")
+    log(f"landmarks received: {len(landmarks)} points")
+
     try:
+        builder = get_beard_template(template_id)
+        log(f"[PROJECT] Template found: {builder is not None}")
+
+        if not builder:
+            log("[PROJECT] ERROR: Template not found")
+            raise HTTPException(status_code=404, detail="Template not found")
+
+        if not hasattr(builder, 'final_template') or builder.final_template is None:
+            log("[PROJECT] ERROR: Template not finalized")
+            raise HTTPException(status_code=400, detail="Template not finalized")
+
+        import numpy as np
         landmarks_array = np.array(landmarks)
-        
+        log(f"[PROJECT] Landmarks array shape: {landmarks_array.shape}")
+
         # Convert normalized to pixel if needed
         if landmarks_array.max() <= 1.0:
             landmarks_array[:, 0] *= image_width
             landmarks_array[:, 1] *= image_height
-        
-        _, contour = builder.project_to_image(
+            log("[PROJECT] Converted normalized landmarks to pixels")
+
+        log(f"[PROJECT] Calling project_to_image with is_mirrored={is_mirrored}")
+        projected_mask, contour = builder.project_to_image(
             landmarks_array,
             (image_height, image_width),
             is_mirrored=is_mirrored
         )
-        
-        return {
+
+        log(f"[PROJECT] Projection complete - mask shape: {projected_mask.shape}, contour points: {len(contour)}")
+
+        result = {
             "success": True,
             "contour_points": contour,
+            "debug_info": {
+                "mask_shape": projected_mask.shape,
+                "contour_count": len(contour),
+                "template_type": "pose_specific" if hasattr(builder, 'pose_masks') and len(builder.pose_masks) > 0 else "legacy"
+            }
         }
+
+        log(f"[PROJECT] Returning result: {len(contour)} contour points")
+        return result
+
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        log(f"[PROJECT] ERROR: {str(e)}")
+        log(f"[PROJECT] Traceback: {error_details}")
+        raise HTTPException(status_code=500, detail=f"Projection failed: {str(e)}")
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

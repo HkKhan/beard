@@ -1,10 +1,9 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { FaceTracker } from './FaceTracker'
 import { useBeardStore, BeardTemplate } from '../store/beardStore'
-import { videoFrameToBase64 } from '../utils/api'
 
-type ScanPhase = 'intro' | 'scanning' | 'processing' | 'complete' | 'error'
+type ScanPhase = 'intro' | 'scanning' | 'processing' | 'naming' | 'complete' | 'error'
 
 interface ScanViewProps {
   onComplete: () => void
@@ -18,17 +17,40 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
   const [phase, setPhase] = useState<ScanPhase>('intro')
   const [progress, setProgress] = useState(0)
   const [frameCount, setFrameCount] = useState(0)
+  const [scanName, setScanName] = useState('')
+  const [templateData, setTemplateData] = useState<any>(null)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
   const [instruction, setInstruction] = useState('Look straight ahead')
   
   const templateIdRef = useRef(`template_${Date.now()}`)
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const landmarksRef = useRef<number[][] | null>(null)
+  const faceBoxRef = useRef<{x: number, y: number, width: number, height: number} | null>(null)
+  const croppedFaceRef = useRef<HTMLCanvasElement | null>(null)
   const frameCountRef = useRef(0)
   const isCapturingRef = useRef(false)
-  const captureIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  const captureIntervalRef = useRef<number | null>(null)
   
   const addTemplate = useBeardStore((s) => s.addTemplate)
+
+  const createNamedTemplate = () => {
+    if (!templateData) return
+
+    const finalName = scanName.trim() || `Scan ${new Date().toLocaleDateString()}`
+    const template: BeardTemplate = {
+      id: templateIdRef.current,
+      name: finalName,
+      createdAt: new Date().toISOString(),
+      beardVertexIndices: [],
+      boundaryVertexIndices: [],
+      calibrationViews: ['multi-angle'],
+      templateData: templateData,
+    }
+
+    addTemplate(template)
+    setPhase('complete')
+    setTimeout(onComplete, 1500)
+  }
 
   const instructions = [
     'Look straight ahead',
@@ -46,40 +68,50 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
   const captureFrame = useCallback(async (): Promise<boolean> => {
     const video = videoRef.current
     const landmarks = landmarksRef.current
-    
-    if (!video || !landmarks || landmarks.length < 468) {
-      console.log('Waiting for face detection...', landmarks?.length)
+    const faceBox = faceBoxRef.current
+    const croppedFace = croppedFaceRef.current
+
+    if (!video || !landmarks || landmarks.length < 468 || !faceBox || !croppedFace) {
+      console.log('Waiting for face detection...', { video: !!video, landmarks: landmarks?.length, faceBox: !!faceBox, croppedFace: !!croppedFace })
       return false
     }
-    
+
     try {
-      // Capture video frame
-      const imageBase64 = videoFrameToBase64(video)
-      const width = video.videoWidth
-      const height = video.videoHeight
-      
-      // Normalize landmarks to 0-1 range
-      const normalizedLandmarks = landmarks.map(([x, y]) => [x / width, y / height])
-      
-      // Send to backend
+      // Use the cropped face canvas from FaceTracker
+      const { canvasToBase64 } = await import('../utils/faceDetection')
+      const croppedImageBase64 = canvasToBase64(croppedFace)
+
+      // Adjust landmarks relative to cropped face
+      const adjustedLandmarks = landmarks.map(([x, y]) => [
+        x - faceBox.x,
+        y - faceBox.y
+      ])
+
+      // Normalize adjusted landmarks to 0-1 range relative to cropped face
+      const normalizedLandmarks = adjustedLandmarks.map(([x, y]) => [
+        x / faceBox.width,
+        y / faceBox.height
+      ])
+
+      // Send cropped face to backend
       const response = await fetch('/api/template/add-frame?template_id=' + templateIdRef.current, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          image: imageBase64,
+          image: croppedImageBase64,
           face_mesh_landmarks: normalizedLandmarks,
           user_prompts: [],
         }),
       })
-      
+
       if (!response.ok) {
         const err = await response.json().catch(() => ({ detail: 'Request failed' }))
         console.error('Frame capture failed:', err.detail)
         return false
       }
-      
+
       return true
-      
+
     } catch (err) {
       console.error('Frame capture error:', err)
       return false
@@ -141,6 +173,24 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
     setPhase('processing')
 
     try {
+      if (!useSavedScan) {
+        // First, process all stored frames with SAM
+        console.log('[SCANVIEW] Processing stored frames with SAM...')
+        const processResponse = await fetch(`/api/template/process-frames?template_id=${templateIdRef.current}&threshold=0.4`, {
+          method: 'POST',
+        })
+
+        if (!processResponse.ok) {
+          const errorText = await processResponse.text()
+          console.error('[SCANVIEW] Frame processing error:', errorText)
+          throw new Error(`Failed to process frames: ${processResponse.status} ${processResponse.statusText}`)
+        }
+
+        const processResult = await processResponse.json()
+        console.log('[SCANVIEW] Frame processing complete:', processResult)
+      }
+
+      // Now finalize the template
       const endpoint = useSavedScan
         ? `/api/scans/${templateIdRef.current}/finalize?threshold=0.4`
         : `/api/template/finalize?template_id=${templateIdRef.current}&threshold=0.4`
@@ -161,20 +211,9 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
       const result = await response.json()
       console.log('[SCANVIEW] Finalize success, result:', result)
 
-      const template: BeardTemplate = {
-        id: templateIdRef.current,
-        name: `Scan ${new Date().toLocaleDateString()}`,
-        createdAt: new Date().toISOString(),
-        beardVertexIndices: [],
-        boundaryVertexIndices: [],
-        calibrationViews: ['multi-angle'],
-        templateData: result.template_data,
-      }
-
-      addTemplate(template)
-      setPhase('complete')
-
-      setTimeout(onComplete, 1500)
+      // Store the template data for naming phase
+      setTemplateData(result.template_data)
+      setPhase('naming')
 
     } catch (err) {
       console.error('Finalize error:', err)
@@ -188,9 +227,13 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
     landmarks: number[][],
     _width: number,
     _height: number,
-    video?: HTMLVideoElement
+    video?: HTMLVideoElement,
+    faceBox?: {x: number, y: number, width: number, height: number},
+    croppedFace?: HTMLCanvasElement
   ) => {
     landmarksRef.current = landmarks
+    faceBoxRef.current = faceBox || null
+    croppedFaceRef.current = croppedFace || null
     if (video) videoRef.current = video
   }, [])
 
@@ -301,7 +344,44 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
             <p className="text-white/60">Combining {frameCount} frames...</p>
           </div>
         )}
-        
+
+        {/* Naming overlay */}
+        {phase === 'naming' && (
+          <div className="h-full flex flex-col items-center justify-center bg-black p-8">
+            <div className="w-20 h-20 mb-6 rounded-full bg-blue-500 flex items-center justify-center">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-medium text-white mb-4">Name Your Template</h3>
+            <p className="text-white/60 mb-6 text-center max-w-md">
+              Give your beard template a name so you can easily identify it later
+            </p>
+
+            <div className="w-full max-w-sm">
+              <input
+                type="text"
+                value={scanName}
+                onChange={(e) => setScanName(e.target.value)}
+                placeholder="My Beard Template"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
+                autoFocus
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    createNamedTemplate()
+                  }
+                }}
+              />
+              <button
+                onClick={createNamedTemplate}
+                className="w-full py-3 px-6 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-smooth"
+              >
+                Save Template
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Complete overlay */}
         {phase === 'complete' && (
           <div className="h-full flex flex-col items-center justify-center bg-black">

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, useEffect } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaceTracker } from './FaceTracker'
 import { useBeardStore } from '../store/beardStore'
@@ -20,29 +20,34 @@ export function ProjectView({ onBack }: ProjectViewProps) {
   const [showSettings, setShowSettings] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  const { savedTemplates, activeTemplateId, setActiveTemplate } = useBeardStore()
+
   // Cached contour from live segmentation
   const lastContourRef = useRef<ContourPoint[]>([])
-  
-  // Throttle requests
-  const lastRequestTime = useRef(0)
-  const REQUEST_INTERVAL = 100  // Live segmentation is more expensive (~100ms)
-  
-  const { savedTemplates, activeTemplateId, setActiveTemplate } = useBeardStore()
-  const activeTemplate = savedTemplates.find((t) => t.id === activeTemplateId)
-  
-  useEffect(() => {
-    if (!activeTemplateId && savedTemplates.length > 0) {
-      setActiveTemplate(savedTemplates[0].id)
-    }
-  }, [activeTemplateId, savedTemplates, setActiveTemplate])
 
-  const segmentLive = useCallback(async (
+  // Rate limiting for template projection requests
+  const lastRequestTime = useRef<number>(0)
+  const REQUEST_INTERVAL = 100 // ms between requests
+  
+
+  const projectTemplate = useCallback(async (
     landmarks: number[][],
     width: number,
     height: number,
-    videoElement: HTMLVideoElement
+    videoElement: HTMLVideoElement,
+    faceBox?: {x: number, y: number, width: number, height: number},
+    croppedFace?: HTMLCanvasElement
   ) => {
-    if (!activeTemplate) return
+    if (!activeTemplateId || !faceBox) {
+      console.log('No active template or face box')
+      return
+    }
+
+    const activeTemplate = savedTemplates.find((t) => t.id === activeTemplateId)
+    if (!activeTemplate) {
+      console.error('Active template not found in frontend store:', activeTemplateId, 'Available:', savedTemplates.map(t => t.id))
+      return
+    }
 
     const now = Date.now()
     if (now - lastRequestTime.current < REQUEST_INTERVAL) {
@@ -51,51 +56,124 @@ export function ProjectView({ onBack }: ProjectViewProps) {
     lastRequestTime.current = now
 
     try {
-      // Capture current video frame
-      const canvas = document.createElement('canvas')
-      canvas.width = width
-      canvas.height = height
-      const ctx = canvas.getContext('2d')!
-      ctx.drawImage(videoElement, 0, 0, width, height)
-      const imageData = canvas.toDataURL('image/jpeg', 0.8)
+      // Adjust landmarks relative to cropped face
+      const adjustedLandmarks = landmarks.map(([x, y]) => [
+        x - faceBox.x,
+        y - faceBox.y
+      ])
 
-      // Normalize landmarks
-      const normalizedLandmarks = landmarks.map(([x, y]) => [x / width, y / height])
+      console.log('Projecting template:', {
+        template_id: activeTemplateId,
+        hasActiveTemplate: !!activeTemplate,
+        templateIds: savedTemplates.map(t => t.id),
+        landmarksCount: adjustedLandmarks.length,
+        imageSize: { width: faceBox.width, height: faceBox.height },
+        faceBox: faceBox,
+        originalLandmarks: landmarks.slice(0, 5), // First 5 landmarks
+        adjustedLandmarks: adjustedLandmarks.slice(0, 5) // First 5 adjusted
+      })
 
-      const response = await fetch('/api/segment/live', {
+      // Check what templates are available on backend
+      try {
+        const checkResponse = await fetch('/api/template/list')
+        if (checkResponse.ok) {
+          const checkData = await checkResponse.json()
+          console.log('Backend templates available:', checkData)
+        } else {
+          console.log('Backend template check failed:', checkResponse.status, checkResponse.statusText)
+        }
+      } catch (checkErr) {
+        console.log('Could not check backend templates:', checkErr.message)
+      }
+
+      console.log('Sending to backend:', {
+        template_id: activeTemplateId,
+        landmarksSample: adjustedLandmarks.slice(0, 5), // First 5 landmarks
+        image_size: { width: Math.round(faceBox.width), height: Math.round(faceBox.height) },
+        is_mirrored: true
+      })
+
+      // Use backend template projection
+      const response = await fetch(`/api/template/project?template_id=${encodeURIComponent(activeTemplateId)}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          image: imageData,
-          face_mesh_landmarks: normalizedLandmarks,
-          user_prompts: [],
-          return_boundary: true,
+          landmarks: adjustedLandmarks,
+          image_width: Math.round(faceBox.width),
+          image_height: Math.round(faceBox.height),
+          is_mirrored: true, // Webcam feed is mirrored
         }),
       })
 
+      console.log('Backend response status:', response.status)
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()))
+
       if (!response.ok) {
-        throw new Error(`Live segmentation failed: ${response.status}`)
+        const errorText = await response.text()
+        console.error('Template projection failed:', response.status, errorText)
+        throw new Error(`Template projection failed: ${response.status} - ${errorText}`)
       }
 
-      const result = await response.json()
+      let result;
+      try {
+        result = await response.json()
+        console.log('Backend projection result:', result)
+
+        if (!result || typeof result !== 'object') {
+          console.error('Invalid response format:', result)
+          return
+        }
+      } catch (jsonError) {
+        console.error('Failed to parse JSON response:', jsonError)
+        const textResponse = await response.text()
+        console.error('Raw response text:', textResponse)
+        throw jsonError
+      }
+
+      console.log('Processing contours:', result.contour_points?.length || 0, 'points')
 
       if (result.contour_points && result.contour_points.length > 0) {
-        lastContourRef.current = result.contour_points.map(([x, y]: [number, number]) => ({ x, y }))
+        // Contour points are already in cropped face coordinates, transform to display coordinates
+        // faceBox is already mirrored to match display coordinates
+        const transformedContour = result.contour_points.map(([x, y]: [number, number]) => ({
+          x: x + faceBox.x,
+          y: y + faceBox.y
+        }))
+
+        console.log('Projection: Received contour points', {
+          originalCount: result.contour_points.length,
+          transformedCount: transformedContour.length,
+          samplePoints: result.contour_points.slice(0, 3),
+          faceBox: faceBox,
+          transformedSample: transformedContour.slice(0, 3)
+        })
+
+        lastContourRef.current = transformedContour
         setError(null)
       }
 
     } catch (err) {
-      console.error('Live segmentation error:', err)
+      console.error('Template projection error:', err)
       // Don't set error for every failed request - too noisy
     }
-  }, [activeTemplate])
+  }, [activeTemplateId, savedTemplates])
 
   const handleLandmarksUpdate = useCallback((
     landmarks: number[][],
     width: number,
     height: number,
-    videoElement?: HTMLVideoElement
+    videoElement?: HTMLVideoElement,
+    faceBox?: {x: number, y: number, width: number, height: number},
+    croppedFace?: HTMLCanvasElement
   ) => {
+    console.log('Projection: Face detected', {
+      hasVideo: !!videoElement,
+      hasFaceBox: !!faceBox,
+      faceBox: faceBox,
+      landmarksCount: landmarks?.length,
+      canvasSize: { width, height }
+    })
+
     if (!overlayRef.current) return
 
     const canvas = overlayRef.current
@@ -105,9 +183,12 @@ export function ProjectView({ onBack }: ProjectViewProps) {
     canvas.height = height
     ctx.clearRect(0, 0, width, height)
 
-    // Request live segmentation
-    if (landmarks.length >= 468 && videoElement) {
-      segmentLive(landmarks, width, height, videoElement)
+    // Project selected template using face data
+    if (videoElement && faceBox) {
+      console.log('Projection: Calling projectTemplate with face data')
+      projectTemplate(landmarks, width, height, videoElement, faceBox, croppedFace)
+    } else {
+      console.log('Projection: Missing video or faceBox', { videoElement: !!videoElement, faceBox: !!faceBox })
     }
 
     // Draw current contour
@@ -139,35 +220,8 @@ export function ProjectView({ onBack }: ProjectViewProps) {
       ctx.stroke()
     }
 
-  }, [lineOpacity, lineWidth, fillOpacity, segmentLive])
+  }, [lineOpacity, lineWidth, fillOpacity, projectTemplate])
 
-  if (savedTemplates.length === 0) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="h-full flex flex-col items-center justify-center p-8"
-      >
-        <div className="w-20 h-20 mb-6 rounded-full border-2 border-white/20 flex items-center justify-center">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" opacity="0.5">
-            <path d="M3 3l18 18M10.5 10.5a3 3 0 0 0 4.24 4.24" />
-            <path d="M13.5 13.5L21 21M3 3l7.5 7.5" />
-          </svg>
-        </div>
-        <p className="text-white/80 text-lg mb-2">No Templates Yet</p>
-        <p className="text-white/40 text-sm text-center max-w-xs mb-6">
-          Scan your face to create a beard template first
-        </p>
-        <button
-          onClick={onBack}
-          className="px-6 py-2 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-smooth"
-        >
-          Go Back
-        </button>
-      </motion.div>
-    )
-  }
 
   return (
     <motion.div
@@ -219,24 +273,35 @@ export function ProjectView({ onBack }: ProjectViewProps) {
         )}
       </main>
 
-      {/* Template selector */}
-      {savedTemplates.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {savedTemplates.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => setActiveTemplate(t.id)}
-              className={`px-4 py-2 rounded-full text-sm transition-smooth ${
-                t.id === activeTemplateId
-                  ? 'bg-white text-black'
-                  : 'bg-white/10 text-white/80 hover:bg-white/20'
-              }`}
-            >
-              {t.name}
-            </button>
-          ))}
+      {/* Status and template reference */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 max-w-[calc(100vw-2rem)]">
+        <div className="bg-black/60 backdrop-blur-sm rounded-lg p-3">
+          <div className="text-green-400 text-xs text-center mb-2 flex items-center justify-center gap-1">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            Template Projection
+          </div>
+          {savedTemplates.length > 0 && (
+            <>
+              <div className="text-white/60 text-xs text-center mb-2">Your Templates ({savedTemplates.length})</div>
+              <div className="flex gap-2 overflow-x-auto max-w-[300px] custom-scrollbar">
+                {savedTemplates.map((t, index) => (
+                  <button
+                    key={`${t.id}-${index}`}
+                    onClick={() => setActiveTemplate(t.id)}
+                    className={`flex-shrink-0 px-3 py-2 rounded-md text-sm whitespace-nowrap transition-colors ${
+                      t.id === activeTemplateId
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-white/10 text-white/80 hover:bg-white/20'
+                    }`}
+                  >
+                    {t.name}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
-      )}
+      </div>
 
       {/* Settings panel */}
       {showSettings && (

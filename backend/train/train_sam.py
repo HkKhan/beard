@@ -44,7 +44,7 @@ def get_device() -> torch.device:
         print("✓ Using CUDA")
         return torch.device("cuda")
     else:
-        print("⚠ Using CPU - training will be slow")
+        print("WARNING: Using CPU - training will be slow")
         return torch.device("cpu")
 
 

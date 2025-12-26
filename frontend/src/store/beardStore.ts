@@ -40,7 +40,7 @@ export const useBeardStore = create<BeardState>()(
       
       addTemplate: (template) =>
         set((state) => ({
-          savedTemplates: [template, ...state.savedTemplates],
+          savedTemplates: [template, ...state.savedTemplates.filter(t => t.id !== template.id)],
           activeTemplateId: template.id,
         })),
       
