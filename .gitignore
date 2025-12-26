@@ -39,6 +39,7 @@ segment-anything/
 
 # Checkpoints and models
 checkpoints/*.pth
+!checkpoints/sam_beard_best.pth  # Allow this one via Git LFS
 *.pth
 *.pkl
 *.npy
