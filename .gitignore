@@ -37,8 +37,8 @@ Thumbs.db
 # Embedded git repository - installed via pip from requirements.txt
 segment-anything/
 
-# Checkpoints and models
-checkpoints/*.pth
+# Checkpoints and models (keeping checkpoints/*.pth for the trained model)
+# checkpoints/*.pth  # Commented out - we want to track the trained model checkpoints
 *.pth
 *.pkl
 *.npy
