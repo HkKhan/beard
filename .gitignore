@@ -10,6 +10,9 @@ ENV/
 *.egg-info/
 dist/
 build/
+.pytest_cache/
+.pytest_cache/
+*.pytest_cache/
 
 # Node
 node_modules/
@@ -31,7 +34,7 @@ Thumbs.db
 # Logs
 *.log
 
-# Embedded git repository
+# Embedded git repository - installed via pip from requirements.txt
 segment-anything/
 
 # Checkpoints and models
