@@ -1,1 +1,454 @@
 2025-12-25 18:02:33 - [TEST] Log file is writable
+2025-12-25 20:39:19 - [STARTUP] BeardAR Backend Starting...
+2025-12-25 20:39:27 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:27 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:30 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:30 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:30 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:31 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:31 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:31 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:33 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:33 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:33 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:34 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:34 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:34 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:36 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:36 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:36 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:37 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:37 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:37 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:38 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:38 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:38 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:40 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:40 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:40 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:41 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:41 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:41 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:43 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:43 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:43 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:44 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:44 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:44 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:46 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:46 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:46 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:47 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:47 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:47 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:49 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:49 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:49 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:50 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:50 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:50 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:52 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:52 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:52 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:53 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:53 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:53 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:55 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:55 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:55 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:56 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:56 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:56 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:58 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:58 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:58 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:39:59 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:39:59 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:39:59 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:01 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:01 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:01 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:02 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:02 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:02 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:04 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:04 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:04 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:05 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:05 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:05 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:06 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:06 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:06 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:08 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:08 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:08 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:09 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:09 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:09 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:10 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:10 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:10 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:11 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:11 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:11 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:13 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:13 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:13 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:14 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:14 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:14 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:15 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:15 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:15 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:16 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:16 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:16 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:18 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:18 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:18 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:19 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:19 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:19 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:20 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:20 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:20 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:21 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:21 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:21 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:22 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:23 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:23 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:24 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:24 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:24 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:25 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:25 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:25 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:26 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:26 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:26 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:28 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:28 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:28 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:29 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:29 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:29 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:30 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:30 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:30 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:32 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:32 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:32 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:33 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:33 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:33 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:34 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:34 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:34 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:35 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:35 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:35 - [ADD_FRAME] template_id=template_1766713164887
+2025-12-25 20:40:37 - [ADD_FRAME] ❌ EXCEPTION: name 'base64' is not defined
+Traceback (most recent call last):
+  File "/Users/haneefkhan/Desktop/dev/bear/backend/main.py", line 345, in add_frame_to_template
+    mask_b64 = base64.b64encode(mask_buffer).decode('utf-8')
+               ^^^^^^
+NameError: name 'base64' is not defined. Did you forget to import 'base64'?
+
+2025-12-25 20:40:37 - [ADD_FRAME] ===== ADDING FRAME =====
+2025-12-25 20:40:37 - [ADD_FRAME] template_id=template_1766713164887

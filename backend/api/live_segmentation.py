@@ -189,3 +189,4 @@ async def process_live_segmentation(
         contour_points=contour_points,  # New field for drawing
     )
 
+

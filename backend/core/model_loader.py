@@ -186,3 +186,4 @@ def get_model_loader() -> ModelLoader:
     """Get the global ModelLoader instance."""
     return model_loader
 
+
