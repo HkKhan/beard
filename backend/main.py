@@ -4,6 +4,7 @@ FastAPI server for beard segmentation and AR overlay projection.
 """
 
 import os
+import base64
 from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
@@ -30,7 +31,7 @@ from api.live_segmentation import process_live_segmentation
 from api.beard_template import (
     BeardTemplateBuilder,
     get_or_create_template,
-    get_template,
+    get_template as get_beard_template,
     save_template,
     delete_template,
 )
@@ -422,7 +423,7 @@ async def finalize_template(template_id: str, threshold: float = 0.4):
         log(f"[FINALIZE_ENDPOINT] template_id={template_id}, threshold={threshold}")
         log(f"[FINALIZE_ENDPOINT] log_file path: {log_file.absolute()}")
     
-        builder = get_template(template_id)
+        builder = get_beard_template(template_id)
         log(f"[FINALIZE_ENDPOINT] Got builder: {builder is not None}")
         
         if not builder:
@@ -461,12 +462,40 @@ async def finalize_template(template_id: str, threshold: float = 0.4):
                 log_to_file(f"[FINALIZE_ENDPOINT] Loaded {len(saved_frames)} frames from disk")
         
         log_to_file(f"[FINALIZE_ENDPOINT] Calling builder.finalize()")
-        binary_mask, contour = builder.finalize(threshold)
-        log_to_file(f"[FINALIZE_ENDPOINT] finalize() returned: binary_mask shape={binary_mask.shape}, contour length={len(contour)}")
-        
+        try:
+            binary_mask, contour = builder.finalize(threshold)
+            log_to_file(f"[FINALIZE_ENDPOINT] finalize() returned: binary_mask shape={binary_mask.shape}, contour length={len(contour)}")
+        except Exception as finalize_error:
+            log_to_file(f"[FINALIZE_ENDPOINT] finalize() failed: {finalize_error}")
+            # Still try to create template data if possible
+            if hasattr(builder, 'mask_sum') and builder.mask_sum.sum() > 0:
+                log_to_file(f"[FINALIZE_ENDPOINT] Attempting to create template from partial data")
+                try:
+                    # Try with a more lenient threshold
+                    binary_mask, contour = builder.finalize(min(threshold + 0.2, 0.8))
+                    log_to_file(f"[FINALIZE_ENDPOINT] Fallback finalize succeeded")
+                except Exception as fallback_error:
+                    log_to_file(f"[FINALIZE_ENDPOINT] Fallback finalize also failed: {fallback_error}")
+                    raise HTTPException(
+                        status_code=500,
+                        detail=f"Template finalization failed. Frames are saved and can be reprocessed later. Error: {str(finalize_error)}"
+                    )
+            else:
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"No valid frame data accumulated. Please scan again. Error: {str(finalize_error)}"
+                )
+
         log_to_file(f"[FINALIZE_ENDPOINT] Calling builder.to_dict()")
-        template_data = builder.to_dict()
-        log_to_file(f"[FINALIZE_ENDPOINT] to_dict() returned with keys: {list(template_data.keys())}")
+        try:
+            template_data = builder.to_dict()
+            log_to_file(f"[FINALIZE_ENDPOINT] to_dict() returned with keys: {list(template_data.keys())}")
+        except Exception as to_dict_error:
+            log_to_file(f"[FINALIZE_ENDPOINT] to_dict() failed: {to_dict_error}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Template serialization failed. Frames are saved and can be reprocessed later. Error: {str(to_dict_error)}"
+            )
         
         # Ensure all values are JSON serializable
         response_data = {
@@ -522,7 +551,7 @@ async def project_template(
     """
     import numpy as np
     
-    builder = get_template(template_id)
+    builder = get_beard_template(template_id)
     if not builder:
         raise HTTPException(status_code=404, detail="Template not found")
     
@@ -573,39 +602,39 @@ async def list_scans():
 async def load_scan_frames(template_id: str):
     """
     Load saved frames and reprocess them into a template.
-    
+
     This allows you to skip the scan phase and just process saved frames.
     """
     frames = load_frames(template_id)
     if not frames:
         raise HTTPException(status_code=404, detail="Scan not found")
-    
+
     model_loader = get_model_loader()
     if not model_loader.is_loaded():
         raise HTTPException(status_code=503, detail="Model not loaded")
-    
+
     try:
         from api.segmentation import decode_base64_image
         from api.live_segmentation import generate_beard_prompts_from_landmarks
         import numpy as np
         import cv2
-        
+
         # Create new template builder
         builder = get_or_create_template(template_id)
         builder.frame_count = 0  # Reset
         builder.mask_sum.fill(0)
         builder.weight_sum.fill(0)
-        
+
         # Process each saved frame
         for i, frame_data in enumerate(frames):
             image = decode_base64_image(frame_data["image"])
             h, w = image.shape[:2]
-            
+
             landmarks = np.array(frame_data["face_mesh_landmarks"])
             if landmarks.max() <= 1.0:
                 landmarks[:, 0] *= w
                 landmarks[:, 1] *= h
-            
+
             # If we have a saved mask, use it; otherwise run SAM
             if "sam_mask_base64" in frame_data and frame_data["sam_mask_base64"]:
                 # Decode saved mask
@@ -620,7 +649,7 @@ async def load_scan_frames(template_id: str):
                 )
                 all_points = np.array([list(p) for p in pos_prompts] + [list(p) for p in neg_prompts])
                 all_labels = np.array([1] * len(pos_prompts) + [0] * len(neg_prompts))
-                
+
                 masks, scores, _ = model_loader.predict(
                     image=image,
                     point_coords=all_points,
@@ -630,21 +659,133 @@ async def load_scan_frames(template_id: str):
                 best_idx = np.argmax(scores)
                 mask = masks[best_idx]
                 confidence = float(scores[best_idx])
-            
+
             builder.add_frame(mask, landmarks, confidence, is_mirrored=True)
-            
+
             if (i + 1) % 10 == 0:
                 print(f"Processed {i + 1}/{len(frames)} frames")
-        
+
         return {
             "success": True,
             "frame_count": builder.frame_count,
             "message": f"Loaded and processed {len(frames)} frames"
         }
-        
+
     except Exception as e:
         import traceback
         print(f"Load scan error: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/scans/{template_id}/finalize")
+async def finalize_saved_scan(template_id: str, threshold: float = 0.4):
+    """
+    Load saved frames and finalize them into a complete template.
+
+    This combines loading and finalizing in one step for convenience.
+    """
+    # First load the frames
+    frames = load_frames(template_id)
+    if not frames:
+        raise HTTPException(status_code=404, detail="Scan not found")
+
+    model_loader = get_model_loader()
+    if not model_loader.is_loaded():
+        raise HTTPException(status_code=503, detail="Model not loaded")
+
+    try:
+        from api.segmentation import decode_base64_image
+        from api.live_segmentation import generate_beard_prompts_from_landmarks
+        import numpy as np
+        import cv2
+
+        # Create new template builder
+        builder = get_or_create_template(template_id)
+        builder.frame_count = 0  # Reset
+        builder.mask_sum.fill(0)
+        builder.weight_sum.fill(0)
+
+        # Process each saved frame
+        for i, frame_data in enumerate(frames):
+            image = decode_base64_image(frame_data["image"])
+            h, w = image.shape[:2]
+
+            landmarks = np.array(frame_data["face_mesh_landmarks"])
+            if landmarks.max() <= 1.0:
+                landmarks[:, 0] *= w
+                landmarks[:, 1] *= h
+
+            # If we have a saved mask, use it; otherwise run SAM
+            if "sam_mask_base64" in frame_data and frame_data["sam_mask_base64"]:
+                # Decode saved mask
+                mask_bytes = base64.b64decode(frame_data["sam_mask_base64"])
+                mask_array = np.frombuffer(mask_bytes, dtype=np.uint8)
+                mask = cv2.imdecode(mask_array, cv2.IMREAD_GRAYSCALE) / 255.0
+                confidence = frame_data.get("sam_confidence", 0.8)
+            else:
+                # Run SAM
+                pos_prompts, neg_prompts = generate_beard_prompts_from_landmarks(
+                    frame_data["face_mesh_landmarks"], w, h
+                )
+                all_points = np.array([list(p) for p in pos_prompts] + [list(p) for p in neg_prompts])
+                all_labels = np.array([1] * len(pos_prompts) + [0] * len(neg_prompts))
+
+                masks, scores, _ = model_loader.predict(
+                    image=image,
+                    point_coords=all_points,
+                    point_labels=all_labels,
+                    multimask_output=True,
+                )
+                best_idx = np.argmax(scores)
+                mask = masks[best_idx]
+                confidence = float(scores[best_idx])
+
+            builder.add_frame(mask, landmarks, confidence, is_mirrored=True)
+
+        # Now finalize
+        from api.beard_template import log_to_file
+        log_to_file(f"[FINALIZE_SAVED_SCAN] Starting finalize for saved scan {template_id}")
+
+        try:
+            binary_mask, contour = builder.finalize(threshold)
+            template_data = builder.to_dict()
+
+            response_data = {
+                "success": True,
+                "frame_count": int(builder.frame_count),
+                "contour_points": [[float(x), float(y)] for x, y in contour] if contour else [],
+                "template_data": template_data,
+                "message": f"Successfully finalized saved scan with {len(frames)} frames"
+            }
+
+            log_to_file(f"[FINALIZE_SAVED_SCAN] Success for {template_id}")
+            return response_data
+
+        except Exception as finalize_error:
+            log_to_file(f"[FINALIZE_SAVED_SCAN] Finalize failed: {finalize_error}")
+            # Try fallback
+            if hasattr(builder, 'mask_sum') and builder.mask_sum.sum() > 0:
+                try:
+                    binary_mask, contour = builder.finalize(min(threshold + 0.2, 0.8))
+                    template_data = builder.to_dict()
+                    return {
+                        "success": True,
+                        "frame_count": int(builder.frame_count),
+                        "contour_points": [[float(x), float(y)] for x, y in contour] if contour else [],
+                        "template_data": template_data,
+                        "message": f"Finalized with fallback threshold after initial failure"
+                    }
+                except Exception as fallback_error:
+                    log_to_file(f"[FINALIZE_SAVED_SCAN] Fallback also failed: {fallback_error}")
+
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to finalize saved scan. Original error: {str(finalize_error)}"
+            )
+
+    except Exception as e:
+        import traceback
+        print(f"Finalize saved scan error: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

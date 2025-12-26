@@ -71,7 +71,7 @@ function HomeView({
       })
       if (response.ok) {
         const result = await response.json()
-        const { addTemplate } = await import('./store/beardStore')
+        const { useBeardStore } = await import('./store/beardStore')
         const template = {
           id: templateId,
           name: `Loaded Scan ${new Date().toLocaleDateString()}`,
@@ -81,7 +81,8 @@ function HomeView({
           calibrationViews: ['loaded'],
           templateData: result.template_data,
         }
-        addTemplate(template)
+        // Use the store directly since we can't use hooks in async functions
+        useBeardStore.getState().addTemplate(template)
         alert('Scan loaded and processed successfully!')
       } else {
         throw new Error('Failed to finalize loaded scan')

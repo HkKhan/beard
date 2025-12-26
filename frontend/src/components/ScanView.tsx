@@ -137,26 +137,30 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
     }
   }, [phase, captureFrame])
 
-  const finalizeTemplate = async () => {
+  const finalizeTemplate = async (useSavedScan: boolean = false) => {
     setPhase('processing')
-    
+
     try {
-      console.log('[SCANVIEW] Starting finalize, template_id:', templateIdRef.current)
-      const response = await fetch('/api/template/finalize?template_id=' + templateIdRef.current + '&threshold=0.4', {
+      const endpoint = useSavedScan
+        ? `/api/scans/${templateIdRef.current}/finalize?threshold=0.4`
+        : `/api/template/finalize?template_id=${templateIdRef.current}&threshold=0.4`
+
+      console.log('[SCANVIEW] Starting finalize, template_id:', templateIdRef.current, 'useSavedScan:', useSavedScan)
+      const response = await fetch(endpoint, {
         method: 'POST',
       })
-      
+
       console.log('[SCANVIEW] Finalize response status:', response.status, response.statusText)
-      
+
       if (!response.ok) {
         const errorText = await response.text()
         console.error('[SCANVIEW] Finalize error response:', errorText)
         throw new Error(`Failed to finalize template: ${response.status} ${response.statusText}`)
       }
-      
+
       const result = await response.json()
       console.log('[SCANVIEW] Finalize success, result:', result)
-      
+
       const template: BeardTemplate = {
         id: templateIdRef.current,
         name: `Scan ${new Date().toLocaleDateString()}`,
@@ -166,12 +170,12 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
         calibrationViews: ['multi-angle'],
         templateData: result.template_data,
       }
-      
+
       addTemplate(template)
       setPhase('complete')
-      
+
       setTimeout(onComplete, 1500)
-      
+
     } catch (err) {
       console.error('Finalize error:', err)
       setErrorMsg(err instanceof Error ? err.message : 'Failed to create template')
@@ -320,14 +324,31 @@ export function ScanView({ onComplete, onCancel }: ScanViewProps) {
                 <path d="M15 9l-6 6M9 9l6 6" />
               </svg>
             </div>
-            <h3 className="text-xl font-medium text-white mb-2">Something went wrong</h3>
-            <p className="text-white/60 mb-6">{errorMsg}</p>
-            <button
-              onClick={() => setPhase('intro')}
-              className="px-6 py-2 rounded-full bg-white text-black font-medium"
-            >
-              Try Again
-            </button>
+            <h3 className="text-xl font-medium text-white mb-2">
+              {errorMsg?.includes('finalize') ? 'Template Creation Failed' : 'Something went wrong'}
+            </h3>
+            <p className="text-white/60 mb-6">
+              {errorMsg?.includes('finalize')
+                ? `Frames were saved (${frameCount} captured). You can retry creating the template or scan again.`
+                : errorMsg
+              }
+            </p>
+            <div className="flex gap-4">
+              {errorMsg?.includes('finalize') && (
+                <button
+                  onClick={() => finalizeTemplate(true)}
+                  className="px-6 py-2 rounded-full bg-blue-500 text-white font-medium hover:bg-blue-600"
+                >
+                  Retry from Saved Frames
+                </button>
+              )}
+              <button
+                onClick={() => setPhase('intro')}
+                className="px-6 py-2 rounded-full bg-white text-black font-medium"
+              >
+                {errorMsg?.includes('finalize') ? 'New Scan' : 'Try Again'}
+              </button>
+            </div>
           </div>
         )}
       </main>

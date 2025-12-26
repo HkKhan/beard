@@ -19,13 +19,13 @@ export function ProjectView({ onBack }: ProjectViewProps) {
   const [fillOpacity, setFillOpacity] = useState(0.15)
   const [showSettings, setShowSettings] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  
-  // Cached contour
+
+  // Cached contour from live segmentation
   const lastContourRef = useRef<ContourPoint[]>([])
   
   // Throttle requests
   const lastRequestTime = useRef(0)
-  const REQUEST_INTERVAL = 50  // Fast - template projection is cheap (~1ms)
+  const REQUEST_INTERVAL = 100  // Live segmentation is more expensive (~100ms)
   
   const { savedTemplates, activeTemplateId, setActiveTemplate } = useBeardStore()
   const activeTemplate = savedTemplates.find((t) => t.id === activeTemplateId)
@@ -36,47 +36,56 @@ export function ProjectView({ onBack }: ProjectViewProps) {
     }
   }, [activeTemplateId, savedTemplates, setActiveTemplate])
 
-  const projectTemplate = useCallback(async (
+  const segmentLive = useCallback(async (
     landmarks: number[][],
     width: number,
-    height: number
+    height: number,
+    videoElement: HTMLVideoElement
   ) => {
     if (!activeTemplate) return
-    
+
     const now = Date.now()
     if (now - lastRequestTime.current < REQUEST_INTERVAL) {
       return
     }
     lastRequestTime.current = now
-    
+
     try {
+      // Capture current video frame
+      const canvas = document.createElement('canvas')
+      canvas.width = width
+      canvas.height = height
+      const ctx = canvas.getContext('2d')!
+      ctx.drawImage(videoElement, 0, 0, width, height)
+      const imageData = canvas.toDataURL('image/jpeg', 0.8)
+
       // Normalize landmarks
       const normalizedLandmarks = landmarks.map(([x, y]) => [x / width, y / height])
-      
-      const response = await fetch('/api/template/project?template_id=' + activeTemplate.id, {
+
+      const response = await fetch('/api/segment/live', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          landmarks: normalizedLandmarks,
-          image_width: width,
-          image_height: height,
-          is_mirrored: true,
+          image: imageData,
+          face_mesh_landmarks: normalizedLandmarks,
+          user_prompts: [],
+          return_boundary: true,
         }),
       })
-      
+
       if (!response.ok) {
-        throw new Error(`Projection failed: ${response.status}`)
+        throw new Error(`Live segmentation failed: ${response.status}`)
       }
-      
+
       const result = await response.json()
-      
-      if (result.success && result.contour_points) {
+
+      if (result.contour_points && result.contour_points.length > 0) {
         lastContourRef.current = result.contour_points.map(([x, y]: [number, number]) => ({ x, y }))
         setError(null)
       }
-      
+
     } catch (err) {
-      console.error('Projection error:', err)
+      console.error('Live segmentation error:', err)
       // Don't set error for every failed request - too noisy
     }
   }, [activeTemplate])
@@ -84,29 +93,30 @@ export function ProjectView({ onBack }: ProjectViewProps) {
   const handleLandmarksUpdate = useCallback((
     landmarks: number[][],
     width: number,
-    height: number
+    height: number,
+    videoElement?: HTMLVideoElement
   ) => {
     if (!overlayRef.current) return
-    
+
     const canvas = overlayRef.current
     const ctx = canvas.getContext('2d')!
-    
+
     canvas.width = width
     canvas.height = height
     ctx.clearRect(0, 0, width, height)
-    
-    // Request updated projection
-    if (landmarks.length >= 468) {
-      projectTemplate(landmarks, width, height)
+
+    // Request live segmentation
+    if (landmarks.length >= 468 && videoElement) {
+      segmentLive(landmarks, width, height, videoElement)
     }
-    
+
     // Draw current contour
     const contour = lastContourRef.current
     if (contour.length > 2) {
       // Smooth the contour using quadratic curves
       ctx.beginPath()
       ctx.moveTo(contour[0].x, contour[0].y)
-      
+
       for (let i = 1; i < contour.length - 1; i++) {
         const xc = (contour[i].x + contour[i + 1].x) / 2
         const yc = (contour[i].y + contour[i + 1].y) / 2
@@ -114,11 +124,11 @@ export function ProjectView({ onBack }: ProjectViewProps) {
       }
       ctx.lineTo(contour[contour.length - 1].x, contour[contour.length - 1].y)
       ctx.closePath()
-      
+
       // Fill
       ctx.fillStyle = `rgba(255, 255, 255, ${fillOpacity})`
       ctx.fill()
-      
+
       // Stroke
       ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity})`
       ctx.lineWidth = lineWidth
@@ -128,8 +138,8 @@ export function ProjectView({ onBack }: ProjectViewProps) {
       ctx.shadowBlur = 8
       ctx.stroke()
     }
-    
-  }, [lineOpacity, lineWidth, fillOpacity, projectTemplate])
+
+  }, [lineOpacity, lineWidth, fillOpacity, segmentLive])
 
   if (savedTemplates.length === 0) {
     return (
